@@ -1,9 +1,18 @@
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = addPokemon;
-xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/lickitung.json', true);
-xhttp.send();
+var pokemon1 = 'lickitung';
+var pokemon2 = 'rowlet';
+var pokemon3 = 'exeggutor';
 
-function addPokemon() {
+
+function newPokemon(pokemon) {
+  console.log('http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json');
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = addPokemon(xhttp);
+  xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
+  xhttp.send();
+}
+
+
+function addPokemon(xhttp) {
   if (xhttp.readyState == 4 && xhttp.status == 200) {
     var info = JSON.parse(xhttp.responseText);
     var pokeName = info['name'];
@@ -15,10 +24,6 @@ function addPokemon() {
     ability2 = info['abilities'][1]['ability']['name'];
     abilities.push(ability1, ability2);
     let pokemon = new Pokemon(pokeName, hp, attack, defense, abilities);
-  } else {
-    console.log('There was an error retrieving your request.');
-    console.log(xhttp.readyState);
-    console.log(xhttp.status);
   }
 }
 
