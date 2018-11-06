@@ -1,0 +1,58 @@
+body {
+  color: whitesmoke;
+  background-color: #333;
+}
+
+.container {
+  grid-row-gap: 30px;
+}
+
+#row1 {
+  height: 100px;
+}
+
+#trainer {
+  background-image: url('trainer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+}
+
+#row2 {
+  height: 250px;
+}
+
+#p1 {
+  background-image: url('https://cdn.bulbagarden.net/upload/thumb/0/00/108Lickitung.png/250px-108Lickitung.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#p2 {
+  background-image: url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/722.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#p3 {
+  background-image: url('https://cdn.bulbagarden.net/upload/thumb/2/24/103Exeggutor.png/250px-103Exeggutor.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.row h2 {
+  position: absolute;
+  bottom: 0;
+  left: 35%;
+}
+
+.row h3 {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  margin: 0;
+}
