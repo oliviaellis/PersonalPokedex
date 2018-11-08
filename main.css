@@ -1,10 +1,12 @@
 body {
   color: whitesmoke;
   background-color: #333;
+  font-family: 'Oswald', sans-serif;
 }
 
 .container {
-  grid-row-gap: 30px;
+  position: relative;
+  padding: 0;
 }
 
 #row1 {
@@ -16,19 +18,99 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
-  border-style: solid;
-  border-width: 3px;
-  border-color: black;
 }
 
 #row2 {
-  height: 250px;
+  height: 500px;
 }
 
-.row h2 {
-  position: absolute;
+.col-md-1:hover {
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+.col-md-10:hover {
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+.col-md-4:hover {
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+#top {
+  height: 50vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  background-color: red;
+  top: 0;
+  transition: top 0.7s linear;
+}
+
+#bottom {
+  height: 50vh;
+  width: 100vw;
+  position: fixed;
   bottom: 0;
-  left: 35%;
+  z-index: 1;
+  background-color: white;
+  transition: bottom 1s linear;
+}
+
+#stripe {
+  height: 10vh;
+  width: 100vw;
+  position: fixed;
+  top: 45%;
+  z-index: 2;
+  background-color: black;
+  transition: top 1s linear;
+}
+
+#outer-circle {
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  z-index: 2;
+  border-radius: 100px;
+  background-color: black;
+  transition: top 1s linear;
+}
+
+#inner-circle {
+  height: 170px;
+  width: 170px;
+  position: fixed;
+  top: 37%;
+  left: 41.25%;
+  z-index: 2;
+  border-radius: 85px;
+  background-color: white;
+  transition: top 1s linear;
+}
+
+#inner-circle:hover {
+  background-color: #d7d7d7;
+}
+
+#row2 > div {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-position: left bottom;
+}
+
+.row {
+  position: relative;
+}
+.row h2 {
+  font-size: 4.8em;
+  position: absolute;
+  right: 15%;
 }
 
 .row h3 {
@@ -36,4 +118,29 @@ body {
   bottom: 0;
   left: 20%;
   margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.col-md-1 {
+  position: relative;
+}
+
+.rotate {
+  transform: rotate(270deg);
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+  font-size: 3em;
 }
