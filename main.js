@@ -61,15 +61,20 @@ newPokemon(pokemon1);
 newPokemon(pokemon2);
 newPokemon(pokemon3);
 
-// This is throwing an error
-setTimeout(function(){
-  var h2 = document.createElement('h2');
-  var pokemonName = document.createTextNode(trainer.team[0]['name']);
-  h2.appendChild(pokemonName);
-  document.getElementById('p1').appendChild(h2);
+// populate grid with Pokemon names and background photos
+  for (i in trainer.team) {
+  let grid = document.getElementById('row2');
+  let div = document.createElement('div');
+  div.classList.add('col-md-4');
+  div.style.backgroundImage = 'url(images/' + trainer.team[i]['name'] + '.png)'
+  let h2 = document.createElement('h2');
+  h2.innerHTML = trainer.team[i]['name'];
+  div.appendChild(h2);
+  grid.appendChild(div);
+}
 }, 100);
 
-
+// generate trainer name
 var h3 = document.createElement('h3');
 var nameText = document.createTextNode(trainer.name);
 h3.appendChild(nameText);

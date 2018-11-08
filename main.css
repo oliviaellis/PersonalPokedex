@@ -25,25 +25,6 @@ body {
   height: 250px;
 }
 
-#p1 {
-  background-image: url('https://cdn.bulbagarden.net/upload/thumb/0/00/108Lickitung.png/250px-108Lickitung.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#p2 {
-  background-image: url('https://assets.pokemon.com/assets/cms2/img/pokedex/full/722.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-#p3 {
-  background-image: url('https://cdn.bulbagarden.net/upload/thumb/2/24/103Exeggutor.png/250px-103Exeggutor.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .row h2 {
   position: absolute;
   bottom: 0;
