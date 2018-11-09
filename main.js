@@ -1,6 +1,6 @@
 var pokemon1 = 'lickitung';
 var pokemon2 = 'rowlet';
-var pokemon3 = 'wartortle';
+var pokemon3 = 'spoink';
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
@@ -192,6 +192,7 @@ setTimeout(function(){
 }, 200);
 
 function selectPokemon(divID) {
+  divID.classList.toggle('col-md-1', false);
   divID.classList.toggle('col-md-4', false);
   divID.classList.toggle('col-md-10', true);
   divID.firstChild.classList.toggle('rotate', false);
@@ -238,8 +239,25 @@ setTimeout (function() {
   var p2 = document.getElementById('p2');
 }, 200);
 
+
+function revertColumns() {
+  p0.classList.toggle('col-md-4', true);
+  p0.classList.toggle('col-md-10', false);
+  p0.classList.toggle('col-md-1', false);
+  p1.classList.toggle('col-md-4', true);
+  p1.classList.toggle('col-md-10', false);
+  p1.classList.toggle('col-md-1', false);
+  p2.classList.toggle('col-md-4', true);
+  p2.classList.toggle('col-md-10', false);
+  p2.classList.toggle('col-md-1', false);
+  p0.lastChild.classList.toggle('hidden', true);
+  p1.lastChild.classList.toggle('hidden', true);
+  p2.lastChild.classList.toggle('hidden', true);
+}
+
 // generate trainer name
 var h3 = document.createElement('h3');
 var nameText = document.createTextNode(trainer.name);
 h3.appendChild(nameText);
 document.getElementById('title').appendChild(h3);
+h3.addEventListener('click', revertColumns);

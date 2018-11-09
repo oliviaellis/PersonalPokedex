@@ -1,0 +1,192 @@
+$main-font-color: whitesmoke;
+$main-font: Oswald, sans-serif;
+$stat-font-color: red;
+$page-bg-color: #333;
+$transition-slide-up: top 1s ease-in-out;
+$full-opacity: 1;
+$half-opacity: 0.5;
+$full: 100%;
+$half: 50%;
+$rotate-text: rotate(270deg);
+$xl-text: 12em;
+$lg-text: 7em;
+$md-text: 5em;
+$sm-text: 2em;
+
+body {
+  height: 100vh;
+  background-color: $page-bg-color;
+  font-family: $main-font;
+  background-image: url('trainer.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.container {
+  position: relative;
+  padding: 0;
+}
+
+h2, h3, h4 {
+  color: $main-font-color;
+}
+
+h2 {
+  font-size: $xl-text;
+}
+
+h3 {
+  font-size: $lg-text;
+  &:hover {
+    color: rgb(217, 217, 217);
+  }
+}
+
+h4 {
+  font-size: $md-text;
+  position: absolute;
+  left: 50%;
+}
+
+.row {
+  position: relative;
+  h3 {
+    position: absolute;
+    bottom: 0;
+    font-size: $xl-text;
+    right: 5%;
+    opacity: 0.7;
+  }
+}
+
+#row1 {
+  height: 200px;
+}
+
+
+#row2 {
+  height: 500px;
+  .col-md-10 {
+    h2 {
+      position: absolute;
+      font-size: $md-text;
+      left: 5%;
+      }
+    &:hover {
+      transform: scale(1.02);
+      z-index: 3;
+  }
+}
+  div {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-position: right bottom;
+}
+}
+
+.col-md-1 {
+    position: relative;
+    &:hover {
+      transform: scale(1.02);
+      z-index: 3;
+    }
+    .rotate {
+      transform: $rotate-text;
+      position: absolute;
+      bottom: 30%;
+      left: -20%;
+      font-size: 3em;
+    }
+  }
+
+.col-md-4 {
+  h2 {
+    position: absolute;
+    font-size: 5em;
+    left: 20%;
+    top: 0;
+  }
+  &:hover {
+    transform: scale(1.02);
+    z-index: 2;
+  }
+}
+
+
+span {
+  color: $stat-font-color;
+}
+
+
+#stripe, #outer-circle, #inner-circle {
+  transition: $transition-slide-up;
+}
+
+#top {
+  height: 50vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  background-color: $stat-font-color;
+  top: 0;
+  transition: top 0.8s ease-in-out;
+}
+
+#bottom {
+  height: 50vh;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  background-color: $main-font-color;
+  transition: bottom 1s ease-in-out;
+}
+
+#stripe {
+  height: 10vh;
+  width: 100vw;
+  position: fixed;
+  top: 45%;
+  z-index: 3;
+  background-color: $page-bg-color;
+}
+
+#outer-circle {
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  z-index: 3;
+  border-radius: 100px;
+  background-color: $page-bg-color;
+}
+
+#inner-circle {
+  height: 170px;
+  width: 170px;
+  position: fixed;
+  top: 37%;
+  left: 41.25%;
+  z-index: 3;
+  border-radius: 85px;
+  background-color: $main-font-color;
+  &:hover {
+    background-color: #d7d7d7;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  text-align: left;
+  font-size: $sm-text;
+}

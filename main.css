@@ -1,10 +1,11 @@
 body {
-  color: whitesmoke;
+  height: 100vh;
   background-color: #333;
-  font-family: 'Oswald', sans-serif;
-  background-image: url('trainer.png');
+  font-family: Oswald, sans-serif;
+  background-image: url("trainer.png");
+  background-position: left;
   background-repeat: no-repeat;
-  background-position: left top;
+  background-size: contain;
 }
 
 .container {
@@ -12,45 +13,95 @@ body {
   padding: 0;
 }
 
-/* header */
-#row1 {
-  height: 200px;
+h2, h3, h4 {
+  color: whitesmoke;
 }
 
-.row h4 {
-  font-size: 4em;
+h2 {
+  font-size: 12em;
+}
+
+h3 {
+  font-size: 7em;
+}
+h3:hover {
+  color: rgb(255, 87, 87);
+}
+
+h4 {
+  font-size: 5em;
   position: absolute;
   left: 50%;
 }
 
-#trainer {
-  /* background-image: url('trainer.png'); */
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left;
+.row {
+  position: relative;
+}
+.row h3 {
+  position: absolute;
+  bottom: 0;
+  font-size: 12em;
+  right: 5%;
+  opacity: 0.7;
 }
 
-/* pokemon display */
+#row1 {
+  height: 200px;
+}
+
 #row2 {
   height: 500px;
 }
-
-.col-md-1:hover {
-  transform: scale(1.02);
-  z-index: 3;
+#row2 .col-md-10 h2 {
+  position: absolute;
+  font-size: 5em;
+  left: 5%;
 }
-
 #row2 .col-md-10:hover {
   transform: scale(1.02);
   z-index: 3;
 }
+#row2 div {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-position: right bottom;
+}
 
+.col-md-1 {
+  position: relative;
+}
+.col-md-1:hover {
+  transform: scale(1.02);
+  z-index: 3;
+}
+.col-md-1 .rotate {
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 30%;
+  left: -20%;
+  font-size: 3em;
+}
+
+.col-md-4 h2 {
+  position: absolute;
+  font-size: 5em;
+  left: 20%;
+  top: 0;
+}
 .col-md-4:hover {
   transform: scale(1.02);
   z-index: 2;
 }
 
-/* begin pokeball screen overlay styling */
+span {
+  color: red;
+}
+
+#stripe, #outer-circle, #inner-circle {
+  transition: top 1s ease-in-out;
+}
+
 #top {
   height: 50vh;
   width: 100vw;
@@ -67,7 +118,7 @@ body {
   position: fixed;
   bottom: 0;
   z-index: 2;
-  background-color: white;
+  background-color: whitesmoke;
   transition: bottom 1s ease-in-out;
 }
 
@@ -77,8 +128,7 @@ body {
   position: fixed;
   top: 45%;
   z-index: 3;
-  background-color: black;
-  transition: top 1s ease-in-out;
+  background-color: #333;
 }
 
 #outer-circle {
@@ -89,8 +139,7 @@ body {
   left: 40%;
   z-index: 3;
   border-radius: 100px;
-  background-color: black;
-  transition: top 1s ease-in-out;
+  background-color: #333;
 }
 
 #inner-circle {
@@ -101,31 +150,10 @@ body {
   left: 41.25%;
   z-index: 3;
   border-radius: 85px;
-  background-color: white;
-  transition: top 1s ease-in-out;
+  background-color: whitesmoke;
 }
-
 #inner-circle:hover {
   background-color: #d7d7d7;
-}
-
-#row2 > div {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-position: right bottom;
-}
-
-.row {
-  position: relative;
-}
-
-.row h3 {
-  position: absolute;
-  bottom: 0;
-  font-size: 12em;
-  right: 5%;
-  opacity: 0.7;
 }
 
 .hidden {
@@ -141,42 +169,4 @@ ul {
   font-size: 2em;
 }
 
-.col-md-4 > h2 {
-  position: absolute;
-  font-size: 5em;
-  left: 20%;
-  top: 0;
-}
-
-/* to make positioning on h2s work */
-.col-md-1 {
-  position: relative;
-}
-
-/* styles names while they're selected */
-.col-md-10 > h2 {
-  position: absolute;
-  font-size: 5.5em;
-  left: 5%;
-}
-
-/* styles names while they're vertical  */
-.col-md-1 > .rotate {
-  transform: rotate(270deg);
-  position: absolute;
-  bottom: 30%;
-  font-size: 3em;
-  left: -20%;
-}
-
-#p0 > .rotate {
-  transform: rotate(270deg);
-  position: absolute;
-  bottom: 27%;
-  font-size: 3em;
-  left: -10%;
-}
-
-span {
-  color: red;
-}
+/*# sourceMappingURL=main.css.map */
