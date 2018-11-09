@@ -2,6 +2,9 @@ body {
   color: whitesmoke;
   background-color: #333;
   font-family: 'Oswald', sans-serif;
+  background-image: url('trainer.png');
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
 .container {
@@ -9,44 +12,53 @@ body {
   padding: 0;
 }
 
+/* header */
 #row1 {
-  height: 100px;
+  height: 200px;
+}
+
+.row h4 {
+  font-size: 4em;
+  position: absolute;
+  left: 50%;
 }
 
 #trainer {
-  background-image: url('trainer.png');
+  /* background-image: url('trainer.png'); */
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: right;
+  background-position: left;
 }
 
+/* pokemon display */
 #row2 {
   height: 500px;
 }
 
 .col-md-1:hover {
-  transform: scale(1.01);
-  z-index: 1;
+  transform: scale(1.02);
+  z-index: 3;
 }
 
-.col-md-10:hover {
-  transform: scale(1.01);
-  z-index: 1;
+#row2 .col-md-10:hover {
+  transform: scale(1.02);
+  z-index: 3;
 }
 
 .col-md-4:hover {
-  transform: scale(1.01);
-  z-index: 1;
+  transform: scale(1.02);
+  z-index: 2;
 }
 
+/* begin pokeball screen overlay styling */
 #top {
   height: 50vh;
   width: 100vw;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   background-color: red;
   top: 0;
-  transition: top 0.7s linear;
+  transition: top 0.8s ease-in-out;
 }
 
 #bottom {
@@ -54,9 +66,9 @@ body {
   width: 100vw;
   position: fixed;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: white;
-  transition: bottom 1s linear;
+  transition: bottom 1s ease-in-out;
 }
 
 #stripe {
@@ -64,9 +76,9 @@ body {
   width: 100vw;
   position: fixed;
   top: 45%;
-  z-index: 2;
+  z-index: 3;
   background-color: black;
-  transition: top 1s linear;
+  transition: top 1s ease-in-out;
 }
 
 #outer-circle {
@@ -75,10 +87,10 @@ body {
   position: fixed;
   top: 35%;
   left: 40%;
-  z-index: 2;
+  z-index: 3;
   border-radius: 100px;
   background-color: black;
-  transition: top 1s linear;
+  transition: top 1s ease-in-out;
 }
 
 #inner-circle {
@@ -87,10 +99,10 @@ body {
   position: fixed;
   top: 37%;
   left: 41.25%;
-  z-index: 2;
+  z-index: 3;
   border-radius: 85px;
   background-color: white;
-  transition: top 1s linear;
+  transition: top 1s ease-in-out;
 }
 
 #inner-circle:hover {
@@ -101,23 +113,19 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  background-position: left bottom;
+  background-position: right bottom;
 }
 
 .row {
   position: relative;
 }
-.row h2 {
-  font-size: 4.8em;
-  position: absolute;
-  right: 15%;
-}
 
 .row h3 {
   position: absolute;
   bottom: 0;
-  left: 20%;
-  margin: 0;
+  font-size: 12em;
+  right: 5%;
+  opacity: 0.7;
 }
 
 .hidden {
@@ -128,19 +136,47 @@ ul {
   list-style-type: none;
   position: absolute;
   top: 30%;
-  right: 5%;
-  text-align: center;
+  left: 5%;
+  text-align: left;
   font-size: 2em;
 }
 
+.col-md-4 > h2 {
+  position: absolute;
+  font-size: 5em;
+  left: 20%;
+  top: 0;
+}
+
+/* to make positioning on h2s work */
 .col-md-1 {
   position: relative;
 }
 
-.rotate {
+/* styles names while they're selected */
+.col-md-10 > h2 {
+  position: absolute;
+  font-size: 5.5em;
+  left: 5%;
+}
+
+/* styles names while they're vertical  */
+.col-md-1 > .rotate {
   transform: rotate(270deg);
   position: absolute;
-  left: 0;
-  bottom: 100px;
+  bottom: 30%;
   font-size: 3em;
+  left: -20%;
+}
+
+#p0 > .rotate {
+  transform: rotate(270deg);
+  position: absolute;
+  bottom: 27%;
+  font-size: 3em;
+  left: -10%;
+}
+
+span {
+  color: red;
 }
