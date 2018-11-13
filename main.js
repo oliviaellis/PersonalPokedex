@@ -1,6 +1,6 @@
-var pokemon1 = 'lickitung';
-var pokemon2 = 'rowlet';
-var pokemon3 = 'spoink';
+var pokemon1 = 'gengar';
+var pokemon2 = 'pichu';
+var pokemon3 = 'rowlet';
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
@@ -18,7 +18,27 @@ function openScreen() {
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
   openButton.style.top = '-100%';
+  var h3 = document.createElement('h3');
+  var nameText = document.createTextNode(trainer.name);
+  h3.appendChild(nameText);
+  h3.classList.add('animated');
+  h3.classList.add('slideInRight');
+  h3.classList.add('delay-0.8s');
+  document.getElementById('title').appendChild(h3);
+  h3.addEventListener('click', revertColumns);
+}
 
+function getFlavorText(pokemon) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var info = JSON.parse(xhttp.responseText);
+      var flavorText = info['flavor_text_entries'][2]['flavor_text'];
+      trainer.team[pokemon].bio = flavorText;
+    }
+  }
+  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
+  xhttp.send();
 }
 
 // makes a new pokemon object
@@ -49,13 +69,20 @@ function newPokemon(pokemon) {
         types.push(type2['type']['name']);
       }
       ability1 = info['abilities'][0]['ability']['name'];
-      ability2 = info['abilities'][1]['ability']['name'];
+      abilities.push(ability1);
+      ability2 = info['abilities'][1];
+      if (ability2 != undefined) {
+        abilities.push(ability2['ability']['name']);
+      }
       ability3 = info['abilities'][2];
       if (ability3 != undefined) {
         abilities.push(ability3['ability']['name']);
       }
-      abilities.push(ability1, ability2);
-      pokemon = new Pokemon(pokeName, id, hp, attack, defense, types, abilities);
+      if (ability2 == undefined) {
+        abilities.push('<br>');
+      }
+
+      new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
     }
   }
   xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
@@ -66,7 +93,7 @@ function newPokemon(pokemon) {
 class Trainer {
   constructor(name) {
     this.name = name;
-    this.team = [];
+    this.team = {};
   }
 
   all() {
@@ -83,7 +110,7 @@ class Trainer {
 }
 
 class Pokemon {
-  constructor(name, id, hp, attack, defense, types, abilities) {
+  constructor(name, id, hp, attack, defense, types, abilities, bio) {
     this.name = name;
     this.id = id;
     this.hp = hp;
@@ -91,32 +118,36 @@ class Pokemon {
     this.defense = defense;
     this.types = types;
     this.abilities = abilities;
-    trainer.team.push(this);
+    this.bio = bio;
+    // trainer.team.push(this);
+    trainer.team[this.name] = this;
     }
 }
 
-trainer = new Trainer('olivia');
+trainer = new Trainer('alivia');
 newPokemon(pokemon1);
 newPokemon(pokemon2);
 newPokemon(pokemon3);
 
 // writes pokemon grid things to the page
 setTimeout(function(){
+  let counter = 0;
   for (i in trainer.team) {
+  console.log(trainer.team[i]);
   let grid = document.getElementById('row2');
   let div = document.createElement('div');
   div.classList.add('col-md-4');
   div.classList.add('p-4');
   div.style.transition = 'all 2s';
-  div.setAttribute('id', 'p'+[i]);
-  div.setAttribute('onclick', 'selectPokemon(p'+[i]+')')
-  div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)'
+  div.setAttribute('id', 'p'+ counter);
+  div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+  div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
   let h2 = document.createElement('h2');
   h2.innerHTML = trainer.team[i]['name'];
   div.appendChild(h2);
   grid.appendChild(div);
+  counter++;
 
-  // Look into switch case for this (and thank Camille)
   switch (trainer.team[i]['types'][0]) {
     case 'water':
       div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
@@ -152,7 +183,7 @@ setTimeout(function(){
       div.style.backgroundColor = 'rgba(84, 62, 19, 0.9)';
       break;
     case 'ice':
-      div.style.backgroundColor = 'rgba(109, 186, 207, 0.9)';
+      div.style.backgroundColor = 'rgba(195, 219, 255, 0.9)';
       break;
     case 'bug':
       div.style.backgroundColor = 'rgba(109, 166, 28, 0.9)';
@@ -178,13 +209,27 @@ setTimeout(function(){
   // write stats to page
   let ul = document.createElement('ul');
   ul.classList.add('hidden');
+  ul.classList.add('animated');
+  ul.classList.add('zoomIn');
+  ul.classList.add('delay-1s');
+  // ul.classList.add('fadeOutUp');
   let fighter = trainer.team[i]
-  console.log(fighter);
   for (stat in fighter) {
-    if (stat != ['name'] && stat != ['id']) {
+    if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
+      if (stat != ['abilities']) {
         let li = document.createElement('li');
         li.innerHTML = "<span>" + stat + "</span>" + "                                              " + fighter[stat];
         ul.appendChild(li);
+      } else {
+        let li = document.createElement('li');
+        li.innerHTML = '<span>' + stat + '</span>';
+        ul.appendChild(li);
+        for (i in fighter[stat]) {
+        let li = document.createElement('li');
+        li.innerHTML = fighter[stat][i];
+        ul.appendChild(li);
+      }
+      }
       }
   }
   div.appendChild(ul);
@@ -254,10 +299,3 @@ function revertColumns() {
   p1.lastChild.classList.toggle('hidden', true);
   p2.lastChild.classList.toggle('hidden', true);
 }
-
-// generate trainer name
-var h3 = document.createElement('h3');
-var nameText = document.createTextNode(trainer.name);
-h3.appendChild(nameText);
-document.getElementById('title').appendChild(h3);
-h3.addEventListener('click', revertColumns);
