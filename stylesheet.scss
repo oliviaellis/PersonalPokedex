@@ -69,6 +69,7 @@ h4 {
       position: absolute;
       font-size: $md-text;
       left: 5%;
+      top: 0;
       }
     &:hover {
       transform: scale(1.02);
@@ -103,7 +104,6 @@ h4 {
     position: absolute;
     font-size: 5em;
     left: 20%;
-    top: 0;
   }
   &:hover {
     transform: scale(1.02);
@@ -182,9 +182,17 @@ span {
 ul {
   list-style-type: none;
   position: absolute;
-  top: 28%;
+  top: 23%;
   padding-left: 20px;
   text-align: left;
   font-size: $sm-text;
   columns: 2;
+}
+
+p {
+  width: 300px;
+  position: absolute;
+  top: 58%;
+  padding-left: 20px;
+  font-size: 1.5em;
 }
