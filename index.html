@@ -9,7 +9,27 @@
     <title></title>
 
   </head>
-  <body>
+  <body onload="choosePokemon()">
+    <div id="modal" class="modal">
+      <div class="modal-content">
+      <h2>Welcome, Trainer</h2>
+      <form>
+        <label>Trainer</label>
+        <input type="text" id="trainer"></input>
+        <br>
+        <label>Pokemon 1</label>
+        <input type="text" id="pokemon1"></input>
+        <br>
+        <label>Pokemon 2</label>
+        <input type="text" id="pokemon2"></input>
+        <br>
+        <label>Pokemon 3</label>
+        <input type="text" id="pokemon3"></input>
+        <br>
+        <button type="button" id="submit">Go!</button>
+      </form>
+    </div>
+  </div>
     <section id="top"></section>
     <section id="bottom"></section>
     <section id="stripe"></section>

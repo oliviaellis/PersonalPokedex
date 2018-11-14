@@ -1,6 +1,11 @@
-var pokemon1 = 'gengar';
-var pokemon2 = 'lickitung';
-var pokemon3 = 'diglett';
+var modal = document.getElementById('modal');
+var submit = document.getElementById('submit');
+
+function choosePokemon() {
+    modal.style.display = "block";
+  }
+
+submit.onclick = setUpPage;
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
@@ -129,14 +134,19 @@ class Pokemon {
     }
 }
 
-trainer = new Trainer('alivia');
-newPokemon(pokemon1);
-newPokemon(pokemon2);
-newPokemon(pokemon3);
-
 // writes pokemon grid things to the page
-setTimeout(function(){
+function setUpPage() {
+  modal.style.display = "none";
+  let name = document.getElementById('trainer').value;
+  trainer = new Trainer(name);
+  let pokemon1 = document.getElementById('pokemon1').value.toLowerCase();
+  newPokemon(pokemon1);
+  let pokemon2 = document.getElementById('pokemon2').value.toLowerCase();
+  newPokemon(pokemon2);
+  let pokemon3 = document.getElementById('pokemon3').value.toLowerCase();
+  newPokemon(pokemon3);
   let counter = 0;
+  setTimeout(function() {
   for (i in trainer.team) {
   let grid = document.getElementById('row2');
   let div = document.createElement('div');
@@ -165,6 +175,7 @@ setTimeout(function(){
       break;
     case 'grass':
       div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
+      div.style.color = 'white';
       break;
     case 'flying':
       div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
@@ -251,7 +262,8 @@ setTimeout(function(){
   p.innerHTML = fighter['bio'];
   div.appendChild(p);
 }
-}, 200);
+}, 750);
+}
 
 function selectPokemon(divID) {
   divID.classList.toggle('col-md-1', false);
