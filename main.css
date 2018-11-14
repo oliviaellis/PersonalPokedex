@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background-color: #333;
+  background-color: black;
   font-family: Oswald, sans-serif;
   background-image: url("trainer.png");
   background-position: left;
@@ -52,7 +52,7 @@ h4 {
 #row2 .col-md-10 h2 {
   position: absolute;
   font-size: 5em;
-  left: 5%;
+  left: 40px;
   top: 0;
 }
 #row2 .col-md-10:hover {
@@ -92,7 +92,7 @@ h4 {
 }
 
 span {
-  color: red;
+  color: #ac0000;
 }
 
 #stripe, #outer-circle, #inner-circle {
@@ -104,7 +104,7 @@ span {
   width: 100vw;
   position: fixed;
   z-index: 4;
-  background-color: red;
+  background-color: #ac0000;
   top: 0;
   transition: top 0.8s ease-in-out;
 }
@@ -125,7 +125,7 @@ span {
   position: fixed;
   top: 45%;
   z-index: 5;
-  background-color: #333;
+  background-color: black;
 }
 
 #outer-circle {
@@ -136,7 +136,7 @@ span {
   left: 40%;
   z-index: 5;
   border-radius: 100px;
-  background-color: #333;
+  background-color: black;
 }
 
 #inner-circle {
@@ -160,8 +160,8 @@ span {
 ul {
   list-style-type: none;
   position: absolute;
-  top: 23%;
-  padding-left: 20px;
+  top: 22%;
+  padding-left: 40px;
   text-align: left;
   font-size: 1.7em;
   columns: 2;
@@ -170,8 +170,8 @@ ul {
 p {
   width: 300px;
   position: absolute;
-  top: 58%;
-  padding-left: 20px;
+  top: 56%;
+  padding-left: 40px;
   font-size: 1.5em;
 }
 

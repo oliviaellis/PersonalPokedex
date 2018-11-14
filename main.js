@@ -1,6 +1,6 @@
 var pokemon1 = 'gengar';
-var pokemon2 = 'pichu';
-var pokemon3 = 'rowlet';
+var pokemon2 = 'lickitung';
+var pokemon3 = 'diglett';
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
@@ -33,8 +33,13 @@ function getFlavorText(pokemon) {
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       var info = JSON.parse(xhttp.responseText);
-      var flavorText = info['flavor_text_entries'][2]['flavor_text'];
-      trainer.team[pokemon].bio = flavorText;
+      var entries = info['flavor_text_entries'];
+      for (item of entries) {
+        if (item['language']['name'] === 'en') {
+          var flavorText = item['flavor_text'];
+          trainer.team[pokemon].bio = flavorText;
+      }
+      }
     }
   }
   xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
@@ -101,10 +106,10 @@ class Trainer {
   }
 
   get(name) {
-    for (let i = 0; i < this.team.length; i++) {
-      if (name == this.team[i].name) {
-        console.log(this.team[i]);
-      }
+    for (i in this.team) {
+      if (this.team[i]['name'] === name) {
+      console.log(this.team[i]);
+    }
     }
   }
 }
@@ -150,6 +155,7 @@ setTimeout(function(){
   switch (trainer.team[i]['types'][0]) {
     case 'water':
       div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
+      div.style.color = 'white';
       break;
     case 'fire':
       div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
@@ -165,12 +171,14 @@ setTimeout(function(){
       break;
     case 'fighting':
       div.style.backgroundColor = 'rgba(130, 12, 0, 0.9)';
+      div.style.color = 'white';
       break;
     case 'normal':
       div.style.backgroundColor = 'rgba(140, 140, 140, 0.9)';
       break;
     case 'poison':
       div.style.backgroundColor = 'rgba(100, 0, 125, 0.9)';
+      div.style.color = 'white';
       break;
     case 'electric':
       div.style.backgroundColor = 'rgba(255, 207, 0, 0.9)';
@@ -192,9 +200,11 @@ setTimeout(function(){
       break;
     case 'ghost':
       div.style.backgroundColor = 'rgba(78, 57, 102, 0.9)';
+      div.style.color = 'white';
       break;
     case 'dark':
       div.style.backgroundColor = 'rgba(31, 27, 42, 0.9)';
+      div.style.color = 'white';
       break;
     case 'steel':
       div.style.backgroundColor = 'rgba(208, 255, 255, 0.9)';
@@ -204,6 +214,7 @@ setTimeout(function(){
       break;
     default:
       div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
+      div.style.color = 'white';
   }
   // write stats to page
   let ul = document.createElement('ul');
@@ -213,7 +224,6 @@ setTimeout(function(){
   ul.classList.add('delay-1s');
   // ul.classList.add('fadeOutUp');
   let fighter = trainer.team[i]
-  console.log(fighter);
   for (stat in fighter) {
     if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
       if (stat != ['abilities'] ) {
@@ -240,7 +250,6 @@ setTimeout(function(){
   p.classList.add('delay-1s');
   p.innerHTML = fighter['bio'];
   div.appendChild(p);
-  console.log(fighter['bio']);
 }
 }, 200);
 
