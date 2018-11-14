@@ -17,7 +17,7 @@ body {
   height: 100vh;
   background-color: $page-bg-color;
   font-family: $main-font;
-  background-image: url('trainer.png');
+  // background-image: url('trainer.png');
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
@@ -257,3 +257,21 @@ button {
 #trainers {
   padding-left: 100px;
 }
+
+// .trainer-row-1 {
+//   div {
+//     &:hover{
+//   border: solid 2px black;
+//   border-radius: 5px;
+// }
+// }
+// }
+//
+// .trainer-row-2 {
+//   div {
+//     &:hover{
+//   border: solid 2px black;
+//   border-radius: 5px;
+// }
+// }
+// }

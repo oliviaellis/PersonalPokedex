@@ -7,6 +7,12 @@ function choosePokemon() {
 
 submit.onclick = setUpPage;
 
+function chooseTrainer(selector) {
+  console.log('Clicked');
+  let body = document.getElementsByTagName('body')[0];
+  body.style.backgroundImage = 'url(images/' + selector + '.png)';
+}
+
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
 // openButton.addEventListener('click', openScreen);
