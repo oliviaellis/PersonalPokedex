@@ -193,11 +193,11 @@ p {
 .modal-content {
   background-color: #333;
   color: whitesmoke;
-  margin: 10% auto;
-  padding: 40px 10px 10px 50px;
+  margin: 5% auto;
+  padding: 20px 10px 10px 50px;
   border: 1px solid #333;
   width: 50%;
-  height: 450px;
+  height: 600px;
 }
 
 form {
@@ -226,6 +226,10 @@ button {
   width: 100px;
   border: none;
   border-radius: 2px;
+}
+
+#trainers {
+  padding-left: 100px;
 }
 
 /*# sourceMappingURL=main.css.map */
