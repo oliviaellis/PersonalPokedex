@@ -155,7 +155,11 @@ function setUpPage() {
   div.style.transition = 'all 2s';
   div.setAttribute('id', 'p'+ counter);
   div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+  if (trainer.team[i]['name'] != 'pikachu') {
   div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
+  } else {
+  div.style.backgroundImage = 'url(pikachu.png)';
+  }
   let h2 = document.createElement('h2');
   h2.innerHTML = trainer.team[i]['name'];
   div.appendChild(h2);
