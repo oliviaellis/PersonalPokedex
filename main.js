@@ -9,7 +9,7 @@ submit.onclick = setUpPage;
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
-openButton.addEventListener('click', openScreen);
+// openButton.addEventListener('click', openScreen);
 
 
 // opens pokemon screen
@@ -136,7 +136,9 @@ class Pokemon {
 
 // writes pokemon grid things to the page
 function setUpPage() {
-  modal.style.display = "none";
+  modal.classList.add('animated');
+  modal.classList.add('slideOutRight');
+  // modal.style.display = "none";
   let name = document.getElementById('trainer').value;
   trainer = new Trainer(name);
   let pokemon1 = document.getElementById('pokemon1').value.toLowerCase();
@@ -264,9 +266,17 @@ function setUpPage() {
   p.classList.add('zoomIn');
   p.classList.add('delay-1s');
   p.innerHTML = fighter['bio'];
+  if (fighter['bio'].length > 150) {
+    p.style.fontSize = '20px';
+    p.style.bottom = '20px';
+  } else if (fighter['bio'].length < 151 && fighter['bio'].length > 110) {
+    p.style.fontSize = '24px';
+    p.style.bottom = '30px';
+  }
   div.appendChild(p);
 }
 }, 750);
+  setTimeout(function() {openScreen()}, 1000);
 }
 
 function selectPokemon(divID) {
