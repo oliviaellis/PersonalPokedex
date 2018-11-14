@@ -95,7 +95,7 @@ function newPokemon(pokemon) {
       new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
     }
   }
-  xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
+  xhttp.open('GET', 'https://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
   xhttp.send();
 }
 
