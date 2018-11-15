@@ -136,18 +136,18 @@ span {
   width: 200px;
   position: fixed;
   top: 35%;
-  left: 40%;
+  left: 44.15%;
   z-index: 5;
   border-radius: 100px;
   background-color: black;
 }
 
 #inner-circle {
-  height: 170px;
+  height: 168px;
   width: 170px;
   position: fixed;
   top: 37%;
-  left: 41.25%;
+  left: 45.15%;
   z-index: 7;
   border-radius: 85px;
   background-color: whitesmoke;

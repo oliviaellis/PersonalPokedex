@@ -3,12 +3,12 @@ var pokemon2 = 'lickitung';
 var pokemon3 = 'diglett';
 
 // adds gym-name and logo image
-var topColor = document.getElementById('top');
-topColor.style.backgroundColor = 'rgb(171, 33, 199)';
-topColor.innerHTML = 'GLOBO GYM';
-topColor.style.fontSize = '150px';
-topColor.style.color = 'rgb(219, 218, 219)';
-topColor.style.textAlign = 'center';
+var topSection = document.getElementById('top');
+topSection.style.backgroundColor = 'rgb(171, 33, 199)';
+topSection.innerHTML = 'GLOBO GYM';
+topSection.style.fontSize = '150px';
+topSection.style.color = 'rgb(219, 218, 219)';
+topSection.style.textAlign = 'center';
 
 
 
