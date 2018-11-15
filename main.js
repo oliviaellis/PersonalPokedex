@@ -7,10 +7,17 @@ function choosePokemon() {
 
 submit.onclick = setUpPage;
 
+
 function chooseTrainer(selector) {
-  console.log('Clicked');
   let body = document.getElementsByTagName('body')[0];
   body.style.backgroundImage = 'url(images/' + selector + '.png)';
+  var icons = document.getElementsByTagName('img');
+  for (let icon of icons) {
+    icon.style.border = 'none';
+  }
+  let icon = document.getElementById(selector);
+  icon.style.border = 'solid 2px rgb(172, 0, 0)';
+  icon.style.borderRadius = '10px';
 }
 
 // function that opens pokemon screen
