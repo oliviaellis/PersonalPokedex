@@ -124,12 +124,16 @@ newPokemon('entei', freddy);
 
 setTimeout(function() {
     writeToScreen(freddy, 'row2');
-}, 500)
-
-// writeToScreen(freddy, 'row2');
-// writeToScreen(christel, 'row4');
-// writeToScreen(ahmet, 'row6');
-// writeToScreen(olivia, 'row8');
+}, 250);
+setTimeout(function() {
+    writeToScreen(christel, 'row4');
+}, 250);
+setTimeout(function() {
+    writeToScreen(ahmet, 'row6');
+}, 250);
+setTimeout(function() {
+    writeToScreen(olivia, 'row8');
+}, 250);
 
 function writeToScreen(trainer, placement) {
   let counter = 0;
@@ -151,109 +155,109 @@ function writeToScreen(trainer, placement) {
   }
   console.log(trainer.team);
   for (i in trainer.team) {
-let grid = document.getElementById(placement);
-let div = document.createElement('div');
-div.classList.add('col-md-4');
-div.classList.add('p-4');
-div.style.transition = 'all 2s';
-div.setAttribute('id', 'p'+ counter);
-div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
-div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
-let h2 = document.createElement('h2');
-h2.innerHTML = trainer.team[i]['name'];
-div.appendChild(h2);
-grid.appendChild(div);
-counter++;
+    let grid = document.getElementById(placement);
+    let div = document.createElement('div');
+    div.classList.add('col-md-4');
+    div.classList.add('p-4');
+    div.style.transition = 'all 2s';
+    div.setAttribute('id', 'p'+ counter);
+    div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+    div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
+    let h2 = document.createElement('h2');
+    h2.innerHTML = trainer.team[i]['name'];
+    div.appendChild(h2);
+    grid.appendChild(div);
+    counter++;
 
-switch (trainer.team[i]['types'][0]) {
-  case 'water':
-    div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
-    div.style.color = 'white';
-    break;
-  case 'fire':
-    div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
-    break;
-  case 'psychic':
-    div.style.backgroundColor = 'rgba(221, 114, 171, 0.9)';
-    break;
-  case 'grass':
-    div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
-    break;
-  case 'flying':
-    div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
-    break;
-  case 'fighting':
-    div.style.backgroundColor = 'rgba(130, 12, 0, 0.9)';
-    div.style.color = 'white';
-    break;
-  case 'normal':
-    div.style.backgroundColor = 'rgba(140, 140, 140, 0.9)';
-    break;
-  case 'poison':
-    div.style.backgroundColor = 'rgba(100, 0, 125, 0.9)';
-    div.style.color = 'white';
-    break;
-  case 'electric':
-    div.style.backgroundColor = 'rgba(255, 207, 0, 0.9)';
-    break;
-  case 'ground':
-    div.style.backgroundColor = 'rgba(209, 168, 87, 0.9)';
-    break;
-  case 'rock':
-    div.style.backgroundColor = 'rgba(84, 62, 19, 0.9)';
-    break;
-  case 'ice':
-    div.style.backgroundColor = 'rgba(195, 219, 255, 0.9)';
-    break;
-  case 'bug':
-    div.style.backgroundColor = 'rgba(109, 166, 28, 0.9)';
-    break;
-  case 'dragon':
-    div.style.backgroundColor = 'rgba(165, 25, 172, 0.9)';
-    break;
-  case 'ghost':
-    div.style.backgroundColor = 'rgba(78, 57, 102, 0.9)';
-    div.style.color = 'white';
-    break;
-  case 'dark':
-    div.style.backgroundColor = 'rgba(31, 27, 42, 0.9)';
-    div.style.color = 'white';
-    break;
-  case 'steel':
-    div.style.backgroundColor = 'rgba(208, 255, 255, 0.9)';
-    break;
-  case 'fairy':
-    div.style.backgroundColor = 'rgba(255, 166, 193, 0.9)';
-    break;
-  default:
-    div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
-    div.style.color = 'white';
-}
-// write stats to page
-let ul = document.createElement('ul');
-ul.classList.add('hidden');
-ul.classList.add('animated');
-ul.classList.add('zoomIn');
-ul.classList.add('delay-1s');
-// ul.classList.add('fadeOutUp');
-let fighter = trainer.team[i]
-for (stat in fighter) {
-  if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
-    if (stat != ['abilities'] ) {
-      let li = document.createElement('li');
-      li.innerHTML = "<span>" + stat + "</span>" + "                                              " + fighter[stat];
-      ul.appendChild(li);
-    } else {
-      let li = document.createElement('li');
-      li.innerHTML = '<span>' + stat + '</span>';
-      ul.appendChild(li);
-      for (i in fighter[stat]) {
-      let li = document.createElement('li');
-      li.innerHTML = fighter[stat][i];
-      ul.appendChild(li);
+    switch (trainer.team[i]['types'][0]) {
+      case 'water':
+        div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'fire':
+        div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
+        break;
+      case 'psychic':
+        div.style.backgroundColor = 'rgba(221, 114, 171, 0.9)';
+        break;
+      case 'grass':
+        div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
+        break;
+      case 'flying':
+        div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
+        break;
+      case 'fighting':
+        div.style.backgroundColor = 'rgba(130, 12, 0, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'normal':
+        div.style.backgroundColor = 'rgba(140, 140, 140, 0.9)';
+        break;
+      case 'poison':
+        div.style.backgroundColor = 'rgba(100, 0, 125, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'electric':
+        div.style.backgroundColor = 'rgba(255, 207, 0, 0.9)';
+        break;
+      case 'ground':
+        div.style.backgroundColor = 'rgba(209, 168, 87, 0.9)';
+        break;
+      case 'rock':
+        div.style.backgroundColor = 'rgba(84, 62, 19, 0.9)';
+        break;
+      case 'ice':
+        div.style.backgroundColor = 'rgba(195, 219, 255, 0.9)';
+        break;
+      case 'bug':
+        div.style.backgroundColor = 'rgba(109, 166, 28, 0.9)';
+        break;
+      case 'dragon':
+        div.style.backgroundColor = 'rgba(165, 25, 172, 0.9)';
+        break;
+      case 'ghost':
+        div.style.backgroundColor = 'rgba(78, 57, 102, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'dark':
+        div.style.backgroundColor = 'rgba(31, 27, 42, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'steel':
+        div.style.backgroundColor = 'rgba(208, 255, 255, 0.9)';
+        break;
+      case 'fairy':
+        div.style.backgroundColor = 'rgba(255, 166, 193, 0.9)';
+        break;
+      default:
+        div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
+        div.style.color = 'white';
     }
+    // write stats to page
+    let ul = document.createElement('ul');
+    ul.classList.add('hidden');
+    ul.classList.add('animated');
+    ul.classList.add('zoomIn');
+    ul.classList.add('delay-1s');
+    // ul.classList.add('fadeOutUp');
+    let fighter = trainer.team[i]
+    for (stat in fighter) {
+      if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
+        if (stat != ['abilities'] ) {
+          let li = document.createElement('li');
+          li.innerHTML = "<span>" + stat + "</span>" + "                                              " + fighter[stat];
+          ul.appendChild(li);
+        } else {
+          let li = document.createElement('li');
+          li.innerHTML = '<span>' + stat + '</span>';
+          ul.appendChild(li);
+          for (i in fighter[stat]) {
+          let li = document.createElement('li');
+          li.innerHTML = fighter[stat][i];
+          ul.appendChild(li);
     }
-    }
+  }
+  }
 }
 div.appendChild(ul);
 let p = document.createElement('p');
