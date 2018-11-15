@@ -125,11 +125,15 @@ newPokemon('entei', freddy);
 setTimeout(function() {
     writeToScreen(freddy, 'row2');
 }, 500)
-
-// writeToScreen(freddy, 'row2');
-// writeToScreen(christel, 'row4');
-// writeToScreen(ahmet, 'row6');
-// writeToScreen(olivia, 'row8');
+setTimeout(function() {
+    writeToScreen(christel, 'row2');
+}, 500)
+setTimeout(function() {
+    writeToScreen(ahmet, 'row2');
+}, 500)
+setTimeout(function() {
+    writeToScreen(olivia, 'row2');
+}, 500)
 
 function writeToScreen(trainer, placement) {
   let counter = 0;
