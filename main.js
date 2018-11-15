@@ -2,6 +2,17 @@ var pokemon1 = 'gengar';
 var pokemon2 = 'lickitung';
 var pokemon3 = 'diglett';
 
+// adds gym-name and logo image
+var topColor = document.getElementById('top');
+topColor.style.backgroundColor = 'rgb(171, 33, 199)';
+topColor.innerHTML = 'GLOBO GYM';
+topColor.style.fontSize = '150px';
+topColor.style.color = 'rgb(219, 218, 219)';
+topColor.style.textAlign = 'center';
+
+
+
+
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
 openButton.addEventListener('click', openScreen);
@@ -340,3 +351,9 @@ function revertColumns() {
   p2.children[1].classList.toggle('hidden', true);
   p2.children[2].classList.toggle('hidden', true);
 }
+
+// //creates gym name
+// //may need a function?
+//   var name = document.createElement("h1");
+//   name.innerHTML = "GLOBO GYM";
+//   document.getElementById("name").appendChild(name);
