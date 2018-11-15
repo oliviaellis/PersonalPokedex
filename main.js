@@ -271,17 +271,18 @@ div.appendChild(p);
 }
 
 function selectPokemon(divID) {
-  console.log('Clicked');
-  console.log(divID);
-  divID.classList.toggle('col-md-1', false);
-  divID.classList.toggle('col-md-4', false);
-  divID.classList.toggle('col-md-10', true);
-  divID.firstChild.classList.toggle('rotate', false);
-  let ul = divID.children[1];
-  let p = divID.children[2];
+  for(i in divID) {
+    // console.log('Clicked');
+  divID[i].classList.toggle('col-md-1', false);
+  console.log(divID[i]);
+  divID[i].classList.toggle('col-md-4', false);
+  divID[i].classList.toggle('col-md-10', true);
+  divID[i].firstChild.classList.toggle('rotate', false);
+  let ul = divID[i].children[1];
+  let p = divID[i].children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
-  if (divID == p0) {
+  if (divID[i] == p0) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
@@ -298,7 +299,7 @@ function selectPokemon(divID) {
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
-  } else if (divID == p1) {
+  } else if (divID[i] == p1) {
     p0.classList.toggle('col-md-4', false);
     p0.classList.toggle('col-md-1', true);
     p0.classList.toggle('col-md-10', false);
@@ -315,7 +316,7 @@ function selectPokemon(divID) {
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
-  } else if (divID == p2) {
+  } else if (divID[i] == p2) {
     p0.classList.toggle('col-md-4', false);
     p0.classList.toggle('col-md-1', true);
     p0.classList.toggle('col-md-10', false);
@@ -333,6 +334,7 @@ function selectPokemon(divID) {
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
   }
+}
 }
 
 setTimeout (function() {
