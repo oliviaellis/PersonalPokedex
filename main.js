@@ -2,14 +2,20 @@ var pokemon1 = 'gengar';
 var pokemon2 = 'lickitung';
 var pokemon3 = 'diglett';
 
-// adds gym-name and logo image
+// adds gym-name
 var topSection = document.getElementById('top');
 topSection.style.backgroundColor = 'rgb(171, 33, 199)';
 topSection.innerHTML = 'GLOBO GYM';
-topSection.style.fontSize = '150px';
+topSection.style.fontSize = '180px';
 topSection.style.color = 'rgb(219, 218, 219)';
 topSection.style.textAlign = 'center';
+topSection.style.fontFamily = 'VT323';
 
+// adds image to inner-circle of pokeball
+var img = document.getElementById('inner-circle');
+img.src = 'images/arbok.png';
+// img.style.height = '25%';
+// img.style.width = '25%';
 
 
 

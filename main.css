@@ -123,31 +123,31 @@ span {
 }
 
 #stripe {
-  height: 10vh;
+  height: 8vh;
   width: 100vw;
   position: fixed;
-  top: 45%;
+  top: 47%;
   z-index: 5;
   background-color: black;
 }
 
 #outer-circle {
-  height: 200px;
-  width: 200px;
+  height: 165px;
+  width: 165px;
   position: fixed;
-  top: 35%;
-  left: 44.15%;
+  top: 38%;
+  left: 43.15%;
   z-index: 5;
   border-radius: 100px;
   background-color: black;
 }
 
 #inner-circle {
-  height: 168px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
   position: fixed;
-  top: 37%;
-  left: 45.15%;
+  top: 39.10%;
+  left: 43.85%;
   z-index: 7;
   border-radius: 85px;
   background-color: whitesmoke;
