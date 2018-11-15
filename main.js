@@ -1,7 +1,3 @@
-var pokemon1 = 'gengar';
-var pokemon2 = 'lickitung';
-var pokemon3 = 'diglett';
-
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
 openButton.addEventListener('click', openScreen);
@@ -18,36 +14,38 @@ function openScreen() {
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
   openButton.style.top = '-100%';
-  var h3 = document.createElement('h3');
-  var nameText = document.createTextNode(trainer.name);
-  h3.appendChild(nameText);
-  h3.classList.add('animated');
-  h3.classList.add('slideInRight');
-  h3.classList.add('delay-0.8s');
-  document.getElementById('title').appendChild(h3);
-  h3.addEventListener('click', revertColumns);
+  // var h3 = document.createElement('h3');
+  // var nameText = document.createTextNode(trainer.name);
+  // h3.appendChild(nameText);
+  // h3.classList.add('animated');
+  // h3.classList.add('slideInRight');
+  // h3.classList.add('delay-0.8s');
+  // document.getElementById('title').appendChild(h3);
+  // h3.addEventListener('click', revertColumns);
 }
 
-function getFlavorText(pokemon) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      var info = JSON.parse(xhttp.responseText);
-      var entries = info['flavor_text_entries'];
-      for (item of entries) {
-        if (item['language']['name'] === 'en') {
-          var flavorText = item['flavor_text'];
-          trainer.team[pokemon].bio = flavorText;
-      }
-      }
-    }
+class Trainer {
+  constructor(name) {
+    this.name = name;
+    this.team = {};
   }
-  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
-  xhttp.send();
 }
 
-// makes a new pokemon object
-function newPokemon(pokemon) {
+class Pokemon {
+  constructor(trainer, name, id, hp, attack, defense, types, abilities, bio) {
+    this.name = name;
+    this.id = id;
+    this.hp = hp;
+    this.attack = attack;
+    this.defense = defense;
+    this.types = types;
+    this.abilities = abilities;
+    this.bio = bio;
+    trainer.team[this.name] = this;
+    }
+}
+
+function newPokemon(pokemon, trainer) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -87,58 +85,56 @@ function newPokemon(pokemon) {
         abilities.push('<br>');
       }
 
-      new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
+      let newPokemon = new Pokemon(trainer, pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon, trainer));
     }
   }
   xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
   xhttp.send();
 }
 
-// new trainer
-class Trainer {
-  constructor(name) {
-    this.name = name;
-    this.team = {};
-  }
-
-  all() {
-    console.log(this.team);
-  }
-
-  get(name) {
-    for (i in this.team) {
-      if (this.team[i]['name'] === name) {
-      console.log(this.team[i]);
-    }
+function getFlavorText(pokemon, trainer) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var info = JSON.parse(xhttp.responseText);
+      var entries = info['flavor_text_entries'];
+      for (item of entries) {
+        if (item['language']['name'] === 'en') {
+          var flavorText = item['flavor_text'];
+          trainer.team[pokemon].bio = flavorText;
+      }
+      }
     }
   }
+  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
+  xhttp.send();
 }
 
-class Pokemon {
-  constructor(name, id, hp, attack, defense, types, abilities, bio) {
-    this.name = name;
-    this.id = id;
-    this.hp = hp;
-    this.attack = attack;
-    this.defense = defense;
-    this.types = types;
-    this.abilities = abilities;
-    this.bio = bio;
-    // trainer.team.push(this);
-    trainer.team[this.name] = this;
-    }
-}
+let olivia = new Trainer('Olivia');
+let christel = new Trainer('Christel');
+let ahmet = new Trainer('Ahmet');
+let freddy = new Trainer('Freddy');
 
-trainer = new Trainer('alivia');
-newPokemon(pokemon1);
-newPokemon(pokemon2);
-newPokemon(pokemon3);
+newPokemon('rowlet', olivia);
+newPokemon('diglett', olivia);
+newPokemon('lickitung', olivia);
+newPokemon('flareon', christel);
+newPokemon('kadabra', christel);
+newPokemon('dewgong', christel);
+newPokemon('rowlet', ahmet);
+newPokemon('diglett', ahmet);
+newPokemon('lickitung', ahmet);
+newPokemon('flareon', freddy);
+newPokemon('kadabra', freddy);
+newPokemon('dewgong', freddy);
 
 // writes pokemon grid things to the page
-setTimeout(function(){
+// setTimeout(function(){
+
+function writeToScreen(trainer, placement) {
   let counter = 0;
   for (i in trainer.team) {
-  let grid = document.getElementById('row2');
+  let grid = document.getElementById(placement);
   let div = document.createElement('div');
   div.classList.add('col-md-4');
   div.classList.add('p-4');
@@ -251,7 +247,9 @@ setTimeout(function(){
   p.innerHTML = fighter['bio'];
   div.appendChild(p);
 }
-}, 200);
+}
+
+writeToScreen(christel, row2);
 
 function selectPokemon(divID) {
   divID.classList.toggle('col-md-1', false);
@@ -320,7 +318,7 @@ setTimeout (function() {
   var p0 = document.getElementById('p0');
   var p1 = document.getElementById('p1');
   var p2 = document.getElementById('p2');
-}, 200);
+}, 200)
 
 
 function revertColumns() {
