@@ -153,7 +153,6 @@ function writeToScreen(trainer, placement) {
   } else if (trainer.name == 'Freddy') {
     document.getElementById('title1').appendChild(h3);
   }
-  console.log(trainer.team);
   for (i in trainer.team) {
     let grid = document.getElementById(placement);
     let div = document.createElement('div');
@@ -162,6 +161,7 @@ function writeToScreen(trainer, placement) {
     div.style.transition = 'all 2s';
     div.setAttribute('id', 'p'+ counter);
     div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+
     div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
     let h2 = document.createElement('h2');
     h2.innerHTML = trainer.team[i]['name'];
@@ -271,17 +271,16 @@ div.appendChild(p);
 }
 
 function selectPokemon(divID) {
-  console.log('Clicked');
-  console.log(divID);
-  divID.classList.toggle('col-md-1', false);
-  divID.classList.toggle('col-md-4', false);
-  divID.classList.toggle('col-md-10', true);
-  divID.firstChild.classList.toggle('rotate', false);
-  let ul = divID.children[1];
-  let p = divID.children[2];
+  for (i in divID) {
+  divID[i].classList.toggle('col-md-1', false);
+  divID[i].classList.toggle('col-md-4', false);
+  divID[i].classList.toggle('col-md-10', true);
+  divID[i].firstChild.classList.toggle('rotate', false);
+  let ul = divID[i].children[1];
+  let p = divID[i].children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
-  if (divID == p0) {
+  if (divID[i] == p0) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
@@ -333,6 +332,7 @@ function selectPokemon(divID) {
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
   }
+}
 }
 
 setTimeout (function() {
