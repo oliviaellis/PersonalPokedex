@@ -124,16 +124,16 @@ newPokemon('entei', freddy);
 
 setTimeout(function() {
     writeToScreen(freddy, 'row2');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(christel, 'row4');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(ahmet, 'row6');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(olivia, 'row8');
-}, 250);
+}, 500);
 
 function writeToScreen(trainer, placement) {
   let counter = 0;
@@ -271,6 +271,8 @@ div.appendChild(p);
 }
 
 function selectPokemon(divID) {
+  console.log('Clicked');
+  console.log(divID);
   divID.classList.toggle('col-md-1', false);
   divID.classList.toggle('col-md-4', false);
   divID.classList.toggle('col-md-10', true);
