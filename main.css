@@ -239,4 +239,19 @@ button {
   height: 90px;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  top: 15%;
+  align-items: flex-start;
+}
+
+.carousel-control-prev {
+  left: -5%;
+}
+
+.carousel-control-next {
+  right: -5%;
+}
+
+
 /*# sourceMappingURL=main.css.map */
