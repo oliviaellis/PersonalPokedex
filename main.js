@@ -14,14 +14,6 @@ function openScreen() {
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
   openButton.style.top = '-100%';
-  // var h3 = document.createElement('h3');
-  // var nameText = document.createTextNode(trainer.name);
-  // h3.appendChild(nameText);
-  // h3.classList.add('animated');
-  // h3.classList.add('slideInRight');
-  // h3.classList.add('delay-0.8s');
-  // document.getElementById('title').appendChild(h3);
-  // h3.addEventListener('click', revertColumns);
 }
 
 class Trainer {
@@ -121,18 +113,39 @@ newPokemon('lickitung', olivia);
 newPokemon('flareon', christel);
 newPokemon('kadabra', christel);
 newPokemon('dewgong', christel);
-newPokemon('rowlet', ahmet);
-newPokemon('diglett', ahmet);
-newPokemon('lickitung', ahmet);
-newPokemon('flareon', freddy);
-newPokemon('kadabra', freddy);
-newPokemon('dewgong', freddy);
+newPokemon('squirtle', ahmet);
+newPokemon('charmander', ahmet);
+newPokemon('bulbasaur', ahmet);
+newPokemon('lugia', freddy);
+newPokemon('pichu', freddy);
+newPokemon('entei', freddy);
 
 // writes pokemon grid things to the page
-// setTimeout(function(){
+
+writeToScreen(freddy, 'row2');
+// writeToScreen(christel, 'row4');
+// writeToScreen(ahmet, 'row6');
+// writeToScreen(olivia, 'row8');
 
 function writeToScreen(trainer, placement) {
   let counter = 0;
+  console.log(trainer.team)
+  var h3 = document.createElement('h3');
+  var nameText = document.createTextNode(trainer.name);
+  h3.appendChild(nameText);
+  h3.classList.add('animated');
+  h3.classList.add('slideInRight');
+  h3.classList.add('delay-0.8s');
+  h3.addEventListener('click', revertColumns);
+  if (trainer.name == 'Olivia') {
+    document.getElementById('title4').appendChild(h3);
+  } else if (trainer.name == 'Christel') {
+    document.getElementById('title2').appendChild(h3);
+  } else if (trainer.name == 'Ahmet') {
+    document.getElementById('title3').appendChild(h3);
+  } else if (trainer.name == 'Freddy') {
+    document.getElementById('title1').appendChild(h3);
+  }
   for (i in trainer.team) {
   let grid = document.getElementById(placement);
   let div = document.createElement('div');
@@ -249,8 +262,6 @@ function writeToScreen(trainer, placement) {
 }
 }
 
-writeToScreen(christel, row2);
-
 function selectPokemon(divID) {
   divID.classList.toggle('col-md-1', false);
   divID.classList.toggle('col-md-4', false);
@@ -318,7 +329,7 @@ setTimeout (function() {
   var p0 = document.getElementById('p0');
   var p1 = document.getElementById('p1');
   var p2 = document.getElementById('p2');
-}, 200)
+}, 200);
 
 
 function revertColumns() {
