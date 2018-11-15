@@ -1,28 +1,10 @@
-var modal = document.getElementById('modal');
-var submit = document.getElementById('submit');
-
-function choosePokemon() {
-    modal.style.display = "block";
-  }
-
-submit.onclick = setUpPage;
-
-
-function chooseTrainer(selector) {
-  let body = document.getElementsByTagName('body')[0];
-  body.style.backgroundImage = 'url(images/' + selector + '.png)';
-  var icons = document.getElementsByTagName('img');
-  for (let icon of icons) {
-    icon.style.border = 'none';
-  }
-  let icon = document.getElementById(selector);
-  icon.style.border = 'solid 2px rgb(172, 0, 0)';
-  icon.style.borderRadius = '10px';
-}
+var pokemon1 = 'gengar';
+var pokemon2 = 'lickitung';
+var pokemon3 = 'diglett';
 
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
-// openButton.addEventListener('click', openScreen);
+openButton.addEventListener('click', openScreen);
 
 
 // opens pokemon screen
@@ -108,7 +90,7 @@ function newPokemon(pokemon) {
       new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
     }
   }
-  xhttp.open('GET', 'https://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
+  xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
   xhttp.send();
 }
 
@@ -147,21 +129,14 @@ class Pokemon {
     }
 }
 
+trainer = new Trainer('alivia');
+newPokemon(pokemon1);
+newPokemon(pokemon2);
+newPokemon(pokemon3);
+
 // writes pokemon grid things to the page
-function setUpPage() {
-  modal.classList.add('animated');
-  modal.classList.add('slideOutRight');
-  // modal.style.display = "none";
-  let name = document.getElementById('trainer').value;
-  trainer = new Trainer(name);
-  let pokemon1 = document.getElementById('pokemon1').value.toLowerCase();
-  newPokemon(pokemon1);
-  let pokemon2 = document.getElementById('pokemon2').value.toLowerCase();
-  newPokemon(pokemon2);
-  let pokemon3 = document.getElementById('pokemon3').value.toLowerCase();
-  newPokemon(pokemon3);
+setTimeout(function(){
   let counter = 0;
-  setTimeout(function() {
   for (i in trainer.team) {
   let grid = document.getElementById('row2');
   let div = document.createElement('div');
@@ -170,11 +145,7 @@ function setUpPage() {
   div.style.transition = 'all 2s';
   div.setAttribute('id', 'p'+ counter);
   div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
-  if (trainer.team[i]['name'] != 'pikachu') {
   div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
-  } else {
-  div.style.backgroundImage = 'url(pikachu.png)';
-  }
   let h2 = document.createElement('h2');
   h2.innerHTML = trainer.team[i]['name'];
   div.appendChild(h2);
@@ -194,7 +165,6 @@ function setUpPage() {
       break;
     case 'grass':
       div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
-      div.style.color = 'white';
       break;
     case 'flying':
       div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
@@ -279,18 +249,9 @@ function setUpPage() {
   p.classList.add('zoomIn');
   p.classList.add('delay-1s');
   p.innerHTML = fighter['bio'];
-  if (fighter['bio'].length > 150) {
-    p.style.fontSize = '20px';
-    p.style.bottom = '20px';
-  } else if (fighter['bio'].length < 151 && fighter['bio'].length > 110) {
-    p.style.fontSize = '24px';
-    p.style.bottom = '30px';
-  }
   div.appendChild(p);
 }
-}, 750);
-  setTimeout(function() {openScreen()}, 1000);
-}
+}, 200);
 
 function selectPokemon(divID) {
   divID.classList.toggle('col-md-1', false);
