@@ -16,11 +16,13 @@ $sm-text: 1.7em;
 body {
   height: 100vh;
   background-color: $page-bg-color;
+  background-image: url('images/gym.jpg');
   font-family: $main-font;
   // background-image: url('trainer.png');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  opacity: 0.3;
 }
 
 .container {
