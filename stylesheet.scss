@@ -10,7 +10,7 @@ $half: 50%;
 $rotate-text: rotate(270deg);
 $xl-text: 12em;
 $lg-text: 7em;
-$md-text: 5em;
+$md-text: 4em;
 $sm-text: 1.7em;
 
 body {
@@ -104,14 +104,14 @@ h4 {
       position: absolute;
       bottom: 30%;
       left: -20%;
-      font-size: 3em;
+      font-size: 2em;
     }
   }
 
 .col-md-4 {
   h2 {
     position: absolute;
-    font-size: 5em;
+    font-size: $md-text;
     left: 20%;
   }
   &:hover {

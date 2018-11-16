@@ -22,11 +22,11 @@ h2, h3, h4 {
 }
 
 .modal-content h2 {
-  font-size: 5em;
+  font-size: 4em;
 }
 
 h4 {
-  font-size: 5em;
+  font-size: 4em;
   position: absolute;
   left: 45%;
 }
@@ -55,7 +55,7 @@ h4 {
 }
 #row2 .col-md-10 h2, #row4 .col-md-10 h2, #row6 .col-md-10 h2, #row8 .col-md-10 h2 {
   position: absolute;
-  font-size: 5em;
+  font-size: 4em;
   left: 40px;
   top: 0;
 }
@@ -82,12 +82,12 @@ h4 {
   position: absolute;
   bottom: 30%;
   left: -20%;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .col-md-4 h2 {
   position: absolute;
-  font-size: 5em;
+  font-size: 4em;
   left: 20%;
 }
 .col-md-4:hover {
