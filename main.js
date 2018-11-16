@@ -107,9 +107,9 @@ let christel = new Trainer('Christel');
 let ahmet = new Trainer('Ahmet');
 let freddy = new Trainer('Freddy');
 
-newPokemon('rowlet', olivia);
-newPokemon('diglett', olivia);
-newPokemon('lickitung', olivia);
+newPokemon('ninetales', olivia);
+newPokemon('porygon', olivia);
+newPokemon('nidorina', olivia);
 newPokemon('flareon', christel);
 newPokemon('kadabra', christel);
 newPokemon('dewgong', christel);
