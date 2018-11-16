@@ -364,6 +364,36 @@ function selectPokemon(divID) {
 }
 
 function revertColumns() {
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
   p0.classList.toggle('col-md-4', true);
   p0.classList.toggle('col-md-10', false);
   p0.classList.toggle('col-md-1', false);
