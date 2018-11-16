@@ -250,13 +250,13 @@ function writeToScreen(trainer, placement) {
         div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
         div.style.color = 'white';
     }
-
+    var pokeImg = document.createElement('img');
     switch (trainer.team[i]['types'][1]) {
       case 'water':
-        div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
+        pokeImg.src = 'images/type/water.jpg';
         break;
       case 'fire':
-        div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
+        pokeImg.src = 'images/type/fire.jpg';
         break;
       case 'psychic':
         div.style.backgroundColor = 'rgba(221, 114, 171, 0.9)';
@@ -343,6 +343,8 @@ p.classList.add('zoomIn');
 p.classList.add('delay-1s');
 p.innerHTML = fighter['bio'];
 div.appendChild(p);
+div.appendChild(pokeImg);
+pokeImg.classList.add('hidden');
 }
 }
 
@@ -351,6 +353,7 @@ function selectPokemon(divID) {
   divID.classList.toggle('col-md-4', false);
   divID.classList.toggle('col-md-10', true);
   divID.firstChild.classList.toggle('rotate', false);
+  divID.lastChild.classList.remove('hidden');
   let ul = divID.children[1];
   let p = divID.children[2];
   ul.classList.toggle('hidden', false);
@@ -390,6 +393,7 @@ function selectPokemon(divID) {
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
     p1.firstChild.classList.toggle('rotate', true);
+    p1.lastChild.classList.add('hidden');
     let ul = p1.children[1];
     let p = p1.children[2]
     ul.classList.toggle('hidden', true);
@@ -398,6 +402,7 @@ function selectPokemon(divID) {
     p2.classList.toggle('col-md-1', true);
     p2.classList.toggle('col-md-10', false);
     p2.firstChild.classList.toggle('rotate', true);
+    p2.lastChild.classList.add('hidden');
     let ul_2 = p2.children[1];
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
@@ -407,6 +412,7 @@ function selectPokemon(divID) {
     p0.classList.toggle('col-md-1', true);
     p0.classList.toggle('col-md-10', false);
     p0.firstChild.classList.toggle('rotate', true);
+    p0.lastChild.classList.add('hidden');
     let ul = p0.children[1];
     let p = p0.children[2]
     ul.classList.toggle('hidden', true);
@@ -415,6 +421,7 @@ function selectPokemon(divID) {
     p2.classList.toggle('col-md-1', true);
     p2.classList.toggle('col-md-10', false);
     p2.firstChild.classList.toggle('rotate', true);
+    p2.lastChild.classList.add('hidden');
     let ul_2 = p2.children[1];
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
@@ -424,6 +431,7 @@ function selectPokemon(divID) {
     p0.classList.toggle('col-md-1', true);
     p0.classList.toggle('col-md-10', false);
     p0.firstChild.classList.toggle('rotate', true);
+    p0.lastChild.classList.add('hidden');
     let ul = p0.children[1];
     let p = p0.children[2]
     ul.classList.toggle('hidden', true);
@@ -432,6 +440,7 @@ function selectPokemon(divID) {
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
     p1.firstChild.classList.toggle('rotate', true);
+    p1.lastChild.classList.add('hidden');
     let ul_2 = p1.children[1];
     let p_2 = p1.children[2]
     ul_2.classList.toggle('hidden', true);
@@ -444,6 +453,7 @@ function revertColumns(divID) {
   divID.classList.toggle('col-md-4', true);
   divID.classList.toggle('col-md-10', false);
   divID.firstChild.classList.toggle('rotate', true);
+  divID.lastChild.classList.remove('hidden');
   let ul = divID.children[1];
   let p = divID.children[2];
   ul.classList.toggle('hidden', false);
@@ -481,12 +491,15 @@ function revertColumns(divID) {
   p0.classList.toggle('col-md-4', true);
   p0.classList.toggle('col-md-10', false);
   p0.classList.toggle('col-md-1', false);
+  p0.lastChild.classList.add('hidden');
   p1.classList.toggle('col-md-4', true);
   p1.classList.toggle('col-md-10', false);
   p1.classList.toggle('col-md-1', false);
+  p1.lastChild.classList.add('hidden');
   p2.classList.toggle('col-md-4', true);
   p2.classList.toggle('col-md-10', false);
   p2.classList.toggle('col-md-1', false);
+  p2.lastChild.classList.add('hidden');
   p0.firstChild.classList.toggle('rotate', false);
   p1.firstChild.classList.toggle('rotate', false);
   p2.firstChild.classList.toggle('rotate', false);
