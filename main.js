@@ -135,8 +135,8 @@ setTimeout(function() {
     writeToScreen(olivia, 'row8');
 }, 500);
 
+let counter = 0;
 function writeToScreen(trainer, placement) {
-  let counter = 0;
   var h3 = document.createElement('h3');
   var nameText = document.createTextNode(trainer.name);
   h3.appendChild(nameText);
@@ -271,16 +271,45 @@ div.appendChild(p);
 }
 
 function selectPokemon(divID) {
-  for (i in divID) {
-  divID[i].classList.toggle('col-md-1', false);
-  divID[i].classList.toggle('col-md-4', false);
-  divID[i].classList.toggle('col-md-10', true);
-  divID[i].firstChild.classList.toggle('rotate', false);
-  let ul = divID[i].children[1];
-  let p = divID[i].children[2];
+  divID.classList.toggle('col-md-1', false);
+  divID.classList.toggle('col-md-4', false);
+  divID.classList.toggle('col-md-10', true);
+  divID.firstChild.classList.toggle('rotate', false);
+  let ul = divID.children[1];
+  let p = divID.children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
-  if (divID[i] == p0) {
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
+  if (divID == p0) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
@@ -333,14 +362,6 @@ function selectPokemon(divID) {
     p_2.classList.toggle('hidden', true);
   }
 }
-}
-
-setTimeout (function() {
-  var p0 = document.getElementById('p0');
-  var p1 = document.getElementById('p1');
-  var p2 = document.getElementById('p2');
-}, 200);
-
 
 function revertColumns() {
   p0.classList.toggle('col-md-4', true);
