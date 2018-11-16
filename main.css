@@ -119,23 +119,23 @@ span {
   z-index: 6
 }
 
-/* .tracking-in-expand {
-	-webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	 position: relative;
+.text-focus-in {
+	-webkit-animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
-@-webkit-keyframes tracking-in-expand {
+@-webkit-keyframes text-focus-in {
   0% {
-    letter-spacing: -0.5em;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
     opacity: 0;
   }
-  40% {
-    opacity: 0.6;
-  }
   100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
     opacity: 1;
   }
-} */
+}
 
 #bottom {
   height: 50vh;
@@ -224,44 +224,5 @@ p {
   height: 600px;
 }
 
-/* form {
-  margin-left: 100px;
-}
-
-label {
-  font-size: 1.7em;
-  padding-right: 30px;
-}
-
-input {
-  border: none;
-  border-bottom: 2px solid #444;
-  background-color: #555;
-  color: whitesmoke;
-}
-
-button {
-  margin-top: 20px;
-  margin-left: 100px;
-  background-color: #ac0000;
-  font-size: 1.7em;
-  color: whitesmoke;
-  height: 60px;
-  width: 100px;
-  border: none;
-  border-radius: 2px;
-}
-
-#trainers {
-  padding-left: 110px;
-}
-
-#trainer-row-1 {
-  height: 90px;
-}
-
-#trainer-row-2 {
-  height: 90px;
-} */
 
 /*# sourceMappingURL=main.css.map */
