@@ -1,7 +1,23 @@
+var pokemon1 = 'gengar';
+var pokemon2 = 'lickitung';
+var pokemon3 = 'diglett';
+
+// adds gym-name/image to entry page
+var img = document.getElementById('inner-circle');
+img.src = 'images/arbok.png';
+
+var gName = document.getElementById('gym-name');
+gName.innerHTML = 'Globo Gym';
+gName.style.fontSize = '150px';
+gName.style.color = 'rgb(219, 218, 219)';
+gName.style.marginLeft = '27%';
+gName.style.fontFamily = 'Oswald, sans-serif';
+gName.style.position = 'fixed';
+gName.style.textShadow = '4px 5px 5px rgb(18, 18, 18)';
+
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
 openButton.addEventListener('click', openScreen);
-
 
 // opens pokemon screen
 function openScreen() {
@@ -9,10 +25,12 @@ function openScreen() {
   let bottom = document.getElementById('bottom');
   let stripe = document.getElementById('stripe');
   let outerCircle = document.getElementById('outer-circle');
+  let gName = document.getElementById('gym-name');
   top.style.top = '-100%';
   bottom.style.bottom = '-100%';
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
+  gName.style.visibility = 'hidden';
   openButton.style.top = '-100%';
 }
 

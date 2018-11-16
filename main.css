@@ -107,9 +107,63 @@ span {
   width: 100vw;
   position: fixed;
   z-index: 4;
-  background-color: #ac0000;
   top: 0;
   transition: top 0.8s ease-in-out;
+  background-color: rgb(171, 33, 199);
+}
+
+
+/* animates the gym name */
+#gym-name {
+  position: relative;
+  z-index: 6
+}
+
+.text-focus-in {
+	-webkit-animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+/* adds the pulse animation to the poke-image */
+.heartbeat {
+	-webkit-animation: heartbeat 1.6s ease-in-out infinite both;
+}
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91)
+    -webkit-animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+ }
 }
 
 #bottom {
@@ -123,31 +177,31 @@ span {
 }
 
 #stripe {
-  height: 10vh;
+  height: 8vh;
   width: 100vw;
   position: fixed;
-  top: 45%;
+  top: 47%;
   z-index: 5;
   background-color: black;
 }
 
 #outer-circle {
-  height: 200px;
-  width: 200px;
+  height: 165px;
+  width: 165px;
   position: fixed;
-  top: 35%;
-  left: 40%;
+  top: 38%;
+  left: 43.15%;
   z-index: 5;
   border-radius: 100px;
   background-color: black;
 }
 
 #inner-circle {
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
   position: fixed;
-  top: 37%;
-  left: 41.25%;
+  top: 39.10%;
+  left: 43.85%;
   z-index: 7;
   border-radius: 85px;
   background-color: whitesmoke;
@@ -199,45 +253,6 @@ p {
   height: 600px;
 }
 
-form {
-  margin-left: 100px;
-}
-
-label {
-  font-size: 1.7em;
-  padding-right: 30px;
-}
-
-input {
-  border: none;
-  border-bottom: 2px solid #444;
-  background-color: #555;
-  color: whitesmoke;
-}
-
-button {
-  margin-top: 20px;
-  margin-left: 100px;
-  background-color: #ac0000;
-  font-size: 1.7em;
-  color: whitesmoke;
-  height: 60px;
-  width: 100px;
-  border: none;
-  border-radius: 2px;
-}
-
-#trainers {
-  padding-left: 110px;
-}
-
-#trainer-row-1 {
-  height: 90px;
-}
-
-#trainer-row-2 {
-  height: 90px;
-}
 
 .carousel-control-prev,
 .carousel-control-next {
