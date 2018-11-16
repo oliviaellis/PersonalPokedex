@@ -1,7 +1,23 @@
+var pokemon1 = 'gengar';
+var pokemon2 = 'lickitung';
+var pokemon3 = 'diglett';
+
+// adds gym-name/image to entry page
+var img = document.getElementById('inner-circle');
+img.src = 'images/arbok.png';
+
+var gName = document.getElementById('gym-name');
+gName.innerHTML = 'Globo Gym';
+gName.style.fontSize = '150px';
+gName.style.color = 'rgb(219, 218, 219)';
+gName.style.marginLeft = '27%';
+gName.style.fontFamily = 'Oswald, sans-serif';
+gName.style.position = 'fixed';
+gName.style.textShadow = '4px 5px 5px rgb(18, 18, 18)';
+
 // function that opens pokemon screen
 var openButton = document.getElementById('inner-circle');
 openButton.addEventListener('click', openScreen);
-
 
 // opens pokemon screen
 function openScreen() {
@@ -9,10 +25,12 @@ function openScreen() {
   let bottom = document.getElementById('bottom');
   let stripe = document.getElementById('stripe');
   let outerCircle = document.getElementById('outer-circle');
+  let gName = document.getElementById('gym-name');
   top.style.top = '-100%';
   bottom.style.bottom = '-100%';
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
+  gName.style.visibility = 'hidden';
   openButton.style.top = '-100%';
 }
 
@@ -124,19 +142,19 @@ newPokemon('entei', freddy);
 
 setTimeout(function() {
     writeToScreen(freddy, 'row2');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(christel, 'row4');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(ahmet, 'row6');
-}, 250);
+}, 500);
 setTimeout(function() {
     writeToScreen(olivia, 'row8');
-}, 250);
+}, 500);
 
+let counter = 0;
 function writeToScreen(trainer, placement) {
-  let counter = 0;
   var h3 = document.createElement('h3');
   var nameText = document.createTextNode(trainer.name);
   h3.appendChild(nameText);
@@ -153,7 +171,6 @@ function writeToScreen(trainer, placement) {
   } else if (trainer.name == 'Freddy') {
     document.getElementById('title1').appendChild(h3);
   }
-  console.log(trainer.team);
   for (i in trainer.team) {
     let grid = document.getElementById(placement);
     let div = document.createElement('div');
@@ -162,6 +179,7 @@ function writeToScreen(trainer, placement) {
     div.style.transition = 'all 2s';
     div.setAttribute('id', 'p'+ counter);
     div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+
     div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
     let h2 = document.createElement('h2');
     h2.innerHTML = trainer.team[i]['name'];
@@ -279,6 +297,36 @@ function selectPokemon(divID) {
   let p = divID.children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
   if (divID == p0) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
@@ -333,14 +381,37 @@ function selectPokemon(divID) {
   }
 }
 
-setTimeout (function() {
-  var p0 = document.getElementById('p0');
-  var p1 = document.getElementById('p1');
-  var p2 = document.getElementById('p2');
-}, 200);
-
-
 function revertColumns() {
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
   p0.classList.toggle('col-md-4', true);
   p0.classList.toggle('col-md-10', false);
   p0.classList.toggle('col-md-1', false);
