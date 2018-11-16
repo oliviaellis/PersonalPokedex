@@ -432,6 +432,7 @@ function revertColumns(divID) {
   p0.firstChild.classList.toggle('rotate', false);
   p1.firstChild.classList.toggle('rotate', false);
   p2.firstChild.classList.toggle('rotate', false);
+  p0.children[1].classList.toggle('hidden', true);
   p0.children[2].classList.toggle('hidden', true);
   p1.children[1].classList.toggle('hidden', true);
   p1.children[2].classList.toggle('hidden', true);
