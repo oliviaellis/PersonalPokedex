@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background-color: white;
+  background-color: black;
   font-family: Oswald, sans-serif;
   background-position: left;
   background-repeat: no-repeat;
@@ -107,10 +107,35 @@ span {
   width: 100vw;
   position: fixed;
   z-index: 4;
-  background-color: #ac0000;
   top: 0;
   transition: top 0.8s ease-in-out;
+  background-color: rgb(171, 33, 199);
 }
+
+/* animates the gym name */
+
+#gym-name {
+  position: relative;
+  z-index: 6
+}
+
+/* .tracking-in-expand {
+	-webkit-animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	 position: relative;
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
 
 #bottom {
   height: 50vh;
@@ -199,7 +224,7 @@ p {
   height: 600px;
 }
 
-form {
+/* form {
   margin-left: 100px;
 }
 
@@ -237,6 +262,6 @@ button {
 
 #trainer-row-2 {
   height: 90px;
-}
+} */
 
 /*# sourceMappingURL=main.css.map */

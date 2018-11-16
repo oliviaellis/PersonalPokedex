@@ -2,21 +2,17 @@ var pokemon1 = 'gengar';
 var pokemon2 = 'lickitung';
 var pokemon3 = 'diglett';
 
-// adds gym-name
-var topSection = document.getElementById('top');
-topSection.style.backgroundColor = 'rgb(171, 33, 199)';
-topSection.innerHTML = 'GLOBO GYM';
-topSection.style.fontSize = '180px';
-topSection.style.color = 'rgb(219, 218, 219)';
-topSection.style.textAlign = 'center';
-topSection.style.fontFamily = 'VT323';
-
 // adds image to inner-circle of pokeball
 var img = document.getElementById('inner-circle');
 img.src = 'images/arbok.png';
-// img.style.height = '25%';
-// img.style.width = '25%';
 
+var gName = document.getElementById('gym-name');
+gName.innerHTML = 'GLOBO GYM';
+gName.style.fontSize = '150px';
+gName.style.color = 'rgb(219, 218, 219)';
+gName.style.marginLeft = '23.5%';
+gName.style.fontFamily = 'Oswald, sans-serif';
+gName.style.position = 'fixed';
 
 
 // function that opens pokemon screen
@@ -30,10 +26,12 @@ function openScreen() {
   let bottom = document.getElementById('bottom');
   let stripe = document.getElementById('stripe');
   let outerCircle = document.getElementById('outer-circle');
+  let gName = document.getElementById('gym-name');
   top.style.top = '-100%';
   bottom.style.bottom = '-100%';
   stripe.style.top = '-100%';
   outerCircle.style.top = '-100%';
+  gName.style.visibility = 'hidden';
   openButton.style.top = '-100%';
   var h3 = document.createElement('h3');
   var nameText = document.createTextNode(trainer.name);
@@ -357,9 +355,3 @@ function revertColumns() {
   p2.children[1].classList.toggle('hidden', true);
   p2.children[2].classList.toggle('hidden', true);
 }
-
-// //creates gym name
-// //may need a function?
-//   var name = document.createElement("h1");
-//   name.innerHTML = "GLOBO GYM";
-//   document.getElementById("name").appendChild(name);
