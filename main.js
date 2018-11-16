@@ -125,9 +125,9 @@ let christel = new Trainer('Christel');
 let ahmet = new Trainer('Ahmet');
 let freddy = new Trainer('Freddy');
 
-newPokemon('rowlet', olivia);
-newPokemon('diglett', olivia);
-newPokemon('lickitung', olivia);
+newPokemon('ninetales', olivia);
+newPokemon('porygon', olivia);
+newPokemon('nidorina', olivia);
 newPokemon('flareon', christel);
 newPokemon('kadabra', christel);
 newPokemon('dewgong', christel);
@@ -432,6 +432,7 @@ function revertColumns(divID) {
   p0.firstChild.classList.toggle('rotate', false);
   p1.firstChild.classList.toggle('rotate', false);
   p2.firstChild.classList.toggle('rotate', false);
+  p0.children[1].classList.toggle('hidden', true);
   p0.children[2].classList.toggle('hidden', true);
   p1.children[1].classList.toggle('hidden', true);
   p1.children[2].classList.toggle('hidden', true);
