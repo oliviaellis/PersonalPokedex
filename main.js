@@ -1,7 +1,3 @@
-var pokemon1 = 'gengar';
-var pokemon2 = 'lickitung';
-var pokemon3 = 'diglett';
-
 // adds gym-name/image to entry page
 var img = document.getElementById('inner-circle');
 img.src = 'images/arbok.png';
