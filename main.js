@@ -16,15 +16,15 @@ function openScreen() {
   openButton.style.top = '-100%';
 }
 
-trainer_count = 1;
+// trainer_count = 1;
 TRAINERS = [];
 
 class Trainer {
    constructor(name) {
-     this.id = trainer_count;
+     // this.id = trainer_count;
      this.name = name;
      this.team = {};
-     trainer_count++;
+     // trainer_count++;
      TRAINERS.push(this);
    }
 }
@@ -273,13 +273,16 @@ div.appendChild(p);
 }
 
 function selectPokemon(divID) {
-  // let container = divID.parentNode;
+  // // console.log(divID);
+  // let container = divID.parentNode.firstElementChild;
   // console.log(container);
+
   let otherPokemon = divID.childNodes;
   console.log(otherPokemon);
 
 
-  // container.classList.remove('col-md-1');
+  // let container = divID.classList.value;
+  // console.log(container);
   divID.classList.toggle('col-md-1', false);
   divID.classList.toggle('col-md-4', false);
   divID.classList.toggle('col-md-10', true);
@@ -290,60 +293,61 @@ function selectPokemon(divID) {
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
 
-  // if (divID == pk_order) {
-  //   p1.classList.toggle('col-md-4', false);
-  //   p1.classList.toggle('col-md-1', true);
-  //   p1.classList.toggle('col-md-10', false);
-  //   p1.firstChild.classList.toggle('rotate', true);
-  //   let ul = p1.children[1];
-  //   let p = p1.children[2]
-  //   ul.classList.toggle('hidden', true);
-  //   p.classList.toggle('hidden', true);
-  //   p2.classList.toggle('col-md-4', false);
-  //   p2.classList.toggle('col-md-1', true);
-  //   p2.classList.toggle('col-md-10', false);
-  //   p2.firstChild.classList.toggle('rotate', true);
-  //   let ul_2 = p2.children[1];
-  //   let p_2 = p2.children[2]
-  //   ul_2.classList.toggle('hidden', true);
-  //   p_2.classList.toggle('hidden', true);
-  // } else if (divID == p1) {
-  //   pk_order.classList.toggle('col-md-4', false);
-  //   pk_order.classList.toggle('col-md-1', true);
-  //   pk_order.classList.toggle('col-md-10', false);
-  //   pk_order.firstChild.classList.toggle('rotate', true);
-  //   let ul = pk_order.children[1];
-  //   let p = pk_order.children[2]
-  //   ul.classList.toggle('hidden', true);
-  //   p.classList.toggle('hidden', true);
-  //   p2.classList.toggle('col-md-4', false);
-  //   p2.classList.toggle('col-md-1', true);
-  //   p2.classList.toggle('col-md-10', false);
-  //   p2.firstChild.classList.toggle('rotate', true);
-  //   let ul_2 = p2.children[1];
-  //   let p_2 = p2.children[2]
-  //   ul_2.classList.toggle('hidden', true);
-  //   p_2.classList.toggle('hidden', true);
-  // } else if (divID == p2) {
-  //   pk_order.classList.toggle('col-md-4', false);
-  //   pk_order.classList.toggle('col-md-1', true);
-  //   pk_order.classList.toggle('col-md-10', false);
-  //   pk_order.firstChild.classList.toggle('rotate', true);
-  //   let ul = pk_order.children[1];
-  //   let p = pk_order.children[2]
-  //   ul.classList.toggle('hidden', true);
-  //   p.classList.toggle('hidden', true);
-  //   p1.classList.toggle('col-md-4', false);
-  //   p1.classList.toggle('col-md-1', true);
-  //   p1.classList.toggle('col-md-10', false);
-  //   p1.firstChild.classList.toggle('rotate', true);
-  //   let ul_2 = p1.children[1];
-  //   let p_2 = p1.children[2]
-  //   ul_2.classList.toggle('hidden', true);
-  //   p_2.classList.toggle('hidden', true);
-  // }
-// }
+  if (divID == pk_order[0]) {
+    console.log(pk_order[0]);
+    p1.classList.toggle('col-md-4', false);
+    p1.classList.toggle('col-md-1', true);
+    p1.classList.toggle('col-md-10', false);
+    p1.firstChild.classList.toggle('rotate', true);
+    let ul = p1.children[1];
+    let p = p1.children[2]
+    ul.classList.toggle('hidden', true);
+    p.classList.toggle('hidden', true);
+    p2.classList.toggle('col-md-4', false);
+    p2.classList.toggle('col-md-1', true);
+    p2.classList.toggle('col-md-10', false);
+    p2.firstChild.classList.toggle('rotate', true);
+    let ul_2 = p2.children[1];
+    let p_2 = p2.children[2]
+    ul_2.classList.toggle('hidden', true);
+    p_2.classList.toggle('hidden', true);
+  } else if (divID == p1) {
+    pk_order.classList.toggle('col-md-4', false);
+    pk_order.classList.toggle('col-md-1', true);
+    pk_order.classList.toggle('col-md-10', false);
+    pk_order.firstChild.classList.toggle('rotate', true);
+    let ul = pk_order.children[1];
+    let p = pk_order.children[2]
+    ul.classList.toggle('hidden', true);
+    p.classList.toggle('hidden', true);
+    p2.classList.toggle('col-md-4', false);
+    p2.classList.toggle('col-md-1', true);
+    p2.classList.toggle('col-md-10', false);
+    p2.firstChild.classList.toggle('rotate', true);
+    let ul_2 = p2.children[1];
+    let p_2 = p2.children[2]
+    ul_2.classList.toggle('hidden', true);
+    p_2.classList.toggle('hidden', true);
+  } else if (divID == p2) {
+    pk_order.classList.toggle('col-md-4', false);
+    pk_order.classList.toggle('col-md-1', true);
+    pk_order.classList.toggle('col-md-10', false);
+    pk_order.firstChild.classList.toggle('rotate', true);
+    let ul = pk_order.children[1];
+    let p = pk_order.children[2]
+    ul.classList.toggle('hidden', true);
+    p.classList.toggle('hidden', true);
+    p1.classList.toggle('col-md-4', false);
+    p1.classList.toggle('col-md-1', true);
+    p1.classList.toggle('col-md-10', false);
+    p1.firstChild.classList.toggle('rotate', true);
+    let ul_2 = p1.children[1];
+    let p_2 = p1.children[2]
+    ul_2.classList.toggle('hidden', true);
+    p_2.classList.toggle('hidden', true);
+  }
 }
+// }
 
 setTimeout (function() {
   var p0 = document.getElementById('pokemon');
@@ -368,29 +372,29 @@ function revertColumns() {
   // p2.children[1].classList.toggle('hidden', true);
   // p2.children[2].classList.toggle('hidden', true);
 }
-trainer_display = 0;
-
-function carouselArrow(direction) {
-  currTrainer = direction.target.id;
-  // alert(direction.target .id);
-  // for(;trainer_display < TRAINERS.length;) {
-  //   console.log(TRAINERS[trainer_display]);
-  // }
-  if(direction.target.id == 'next') {
-    // currTrainer = TRAINERS[trainer_display];
-    var nextTrainer = TRAINERS[trainer_display + 1];
-    // console.log(TRAINERS[trainer_display]);
-    console.log(nextTrainer);
-    // var nextTrainer = currTrainer + 1;
-  }
-  else if(direction.target.id == 'prev') {
-    var prevTrainer = TRAINERS[trainer_display - 1];
-    console.log(prevTrainer);
-  }
-}
-
-let nextarrow = document.getElementById('next');
-let prevarrow = document.getElementById('prev');
-
-nextarrow.addEventListener('click', carouselArrow);
-prevarrow.addEventListener('click', carouselArrow);
+// trainer_display = 0;
+//
+// function carouselArrow(direction) {
+//   currTrainer = direction.target.id;
+//   // alert(direction.target .id);
+//   // for(;trainer_display < TRAINERS.length;) {
+//   //   console.log(TRAINERS[trainer_display]);
+//   // }
+//   if(direction.target.id == 'next') {
+//     // currTrainer = TRAINERS[trainer_display];
+//     var nextTrainer = TRAINERS[trainer_display + 1];
+//     // console.log(TRAINERS[trainer_display]);
+//     console.log(nextTrainer);
+//     // var nextTrainer = currTrainer + 1;
+//   }
+//   else if(direction.target.id == 'prev') {
+//     var prevTrainer = TRAINERS[trainer_display - 1];
+//     console.log(prevTrainer);
+//   }
+// }
+//
+// let nextarrow = document.getElementById('next');
+// let prevarrow = document.getElementById('prev');
+//
+// nextarrow.addEventListener('click', carouselArrow);
+// prevarrow.addEventListener('click', carouselArrow);
