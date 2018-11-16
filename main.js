@@ -16,23 +16,33 @@ function openScreen() {
   openButton.style.top = '-100%';
 }
 
+trainer_count = 1;
+TRAINERS = [];
+
 class Trainer {
-  constructor(name) {
-    this.name = name;
-    this.team = {};
-  }
+   constructor(name) {
+     this.id = trainer_count;
+     this.name = name;
+     this.team = {};
+     trainer_count++;
+     TRAINERS.push(this);
+   }
 }
+
+pk_order = 1;
 
 class Pokemon {
   constructor(trainer, name, id, hp, attack, defense, types, abilities, bio) {
     this.name = name;
     this.id = id;
+    this.order = pk_order;
     this.hp = hp;
     this.attack = attack;
     this.defense = defense;
     this.types = types;
     this.abilities = abilities;
     this.bio = bio;
+    pk_order++;
     trainer.team[this.name] = this;
     }
 }
@@ -102,10 +112,10 @@ function getFlavorText(pokemon, trainer) {
   xhttp.send();
 }
 
-let olivia = new Trainer('Olivia');
+let freddy = new Trainer('Freddy');
 let christel = new Trainer('Christel');
 let ahmet = new Trainer('Ahmet');
-let freddy = new Trainer('Freddy');
+let olivia = new Trainer('Olivia');
 
 newPokemon('rowlet', olivia);
 newPokemon('diglett', olivia);
@@ -124,34 +134,32 @@ newPokemon('entei', freddy);
 
 setTimeout(function() {
     writeToScreen(freddy, 'row2');
-}, 500);
+}, 200);
 setTimeout(function() {
     writeToScreen(christel, 'row4');
-}, 500);
+}, 200);
 setTimeout(function() {
     writeToScreen(ahmet, 'row6');
-}, 500);
+}, 200);
 setTimeout(function() {
     writeToScreen(olivia, 'row8');
-}, 500);
+}, 200);
 
 function writeToScreen(trainer, placement) {
-  let counter = 0;
+  // let counter = 0;
   var h3 = document.createElement('h3');
   var nameText = document.createTextNode(trainer.name);
   h3.appendChild(nameText);
-  h3.classList.add('animated');
-  h3.classList.add('slideInRight');
-  h3.classList.add('delay-0.8s');
+  h3.class = 'animated slideInRight delay-0.8s';
   h3.addEventListener('click', revertColumns);
-  if (trainer.name == 'Olivia') {
-    document.getElementById('title4').appendChild(h3);
+  if (trainer.name == 'Freddy') {
+    document.getElementById('title1').appendChild(h3);
   } else if (trainer.name == 'Christel') {
     document.getElementById('title2').appendChild(h3);
   } else if (trainer.name == 'Ahmet') {
     document.getElementById('title3').appendChild(h3);
-  } else if (trainer.name == 'Freddy') {
-    document.getElementById('title1').appendChild(h3);
+  } else if (trainer.name == 'Olivia') {
+    document.getElementById('title4').appendChild(h3);
   }
   console.log(trainer.team);
   for (i in trainer.team) {
@@ -160,14 +168,14 @@ function writeToScreen(trainer, placement) {
     div.classList.add('col-md-4');
     div.classList.add('p-4');
     div.style.transition = 'all 2s';
-    div.setAttribute('id', 'p'+ counter);
-    div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+    div.setAttribute('id', 'pokemon' + trainer.team[i].order);
+    div.setAttribute('onclick', 'selectPokemon('+'this'+')');
     div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
     let h2 = document.createElement('h2');
     h2.innerHTML = trainer.team[i]['name'];
     div.appendChild(h2);
     grid.appendChild(div);
-    counter++;
+    // counter++;
 
     switch (trainer.team[i]['types'][0]) {
       case 'water':
@@ -235,10 +243,7 @@ function writeToScreen(trainer, placement) {
     }
     // write stats to page
     let ul = document.createElement('ul');
-    ul.classList.add('hidden');
-    ul.classList.add('animated');
-    ul.classList.add('zoomIn');
-    ul.classList.add('delay-1s');
+    ul.class = 'hidden animated zoomIn delay-1s';
     // ul.classList.add('fadeOutUp');
     let fighter = trainer.team[i]
     for (stat in fighter) {
@@ -261,28 +266,28 @@ function writeToScreen(trainer, placement) {
 }
 div.appendChild(ul);
 let p = document.createElement('p');
-p.classList.add('hidden');
-p.classList.add('animated');
-p.classList.add('zoomIn');
-p.classList.add('delay-1s');
+p.class = 'hidden animated zoomIn delay-1s';
 p.innerHTML = fighter['bio'];
 div.appendChild(p);
 }
 }
 
 function selectPokemon(divID) {
-  for(i in divID) {
-    // console.log('Clicked');
-  divID[i].classList.toggle('col-md-1', false);
-  console.log(divID[i]);
-  divID[i].classList.toggle('col-md-4', false);
-  divID[i].classList.toggle('col-md-10', true);
-  divID[i].firstChild.classList.toggle('rotate', false);
-  let ul = divID[i].children[1];
-  let p = divID[i].children[2];
+  let container = divID.parentNode;
+  console.log(container);
+  let otherPokemon = divID.childNodes;
+  console.log(otherPokemon);
+  // get the next sibbling node in order to display in the next and prev arrows.
+
+  divID.classList.toggle('col-md-1', false);
+  divID.classList.toggle('col-md-4', false);
+  divID.classList.toggle('col-md-10', true);
+  divID.firstChild.classList.toggle('rotate', false);
+  let ul = divID.children[1];
+  let p = divID.children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
-  if (divID[i] == p0) {
+  if (divID == pk_order) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
     p1.classList.toggle('col-md-10', false);
@@ -299,13 +304,13 @@ function selectPokemon(divID) {
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
-  } else if (divID[i] == p1) {
-    p0.classList.toggle('col-md-4', false);
-    p0.classList.toggle('col-md-1', true);
-    p0.classList.toggle('col-md-10', false);
-    p0.firstChild.classList.toggle('rotate', true);
-    let ul = p0.children[1];
-    let p = p0.children[2]
+  } else if (divID == p1) {
+    pk_order.classList.toggle('col-md-4', false);
+    pk_order.classList.toggle('col-md-1', true);
+    pk_order.classList.toggle('col-md-10', false);
+    pk_order.firstChild.classList.toggle('rotate', true);
+    let ul = pk_order.children[1];
+    let p = pk_order.children[2]
     ul.classList.toggle('hidden', true);
     p.classList.toggle('hidden', true);
     p2.classList.toggle('col-md-4', false);
@@ -316,13 +321,13 @@ function selectPokemon(divID) {
     let p_2 = p2.children[2]
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
-  } else if (divID[i] == p2) {
-    p0.classList.toggle('col-md-4', false);
-    p0.classList.toggle('col-md-1', true);
-    p0.classList.toggle('col-md-10', false);
-    p0.firstChild.classList.toggle('rotate', true);
-    let ul = p0.children[1];
-    let p = p0.children[2]
+  } else if (divID == p2) {
+    pk_order.classList.toggle('col-md-4', false);
+    pk_order.classList.toggle('col-md-1', true);
+    pk_order.classList.toggle('col-md-10', false);
+    pk_order.firstChild.classList.toggle('rotate', true);
+    let ul = pk_order.children[1];
+    let p = pk_order.children[2]
     ul.classList.toggle('hidden', true);
     p.classList.toggle('hidden', true);
     p1.classList.toggle('col-md-4', false);
@@ -334,30 +339,41 @@ function selectPokemon(divID) {
     ul_2.classList.toggle('hidden', true);
     p_2.classList.toggle('hidden', true);
   }
-}
+// }
 }
 
 setTimeout (function() {
-  var p0 = document.getElementById('p0');
-  var p1 = document.getElementById('p1');
-  var p2 = document.getElementById('p2');
-}, 200);
+  var p0 = document.getElementById('pokemon');
+  var p1 = document.getElementById('pokemon');
+  var p2 = document.getElementById('pokemon');
+}, 500);
 
 
 function revertColumns() {
-  p0.classList.toggle('col-md-4', true);
-  p0.classList.toggle('col-md-10', false);
-  p0.classList.toggle('col-md-1', false);
+  pk_order.classList.toggle('col-md-4', true);
+  pk_order.classList.toggle('col-md-10', false);
+  pk_order.classList.toggle('col-md-1', false);
   p1.classList.toggle('col-md-4', true);
   p1.classList.toggle('col-md-10', false);
   p1.classList.toggle('col-md-1', false);
   p2.classList.toggle('col-md-4', true);
   p2.classList.toggle('col-md-10', false);
   p2.classList.toggle('col-md-1', false);
-  p0.children[1].classList.toggle('hidden', true);
-  p0.children[2].classList.toggle('hidden', true);
+  pk_order.children[1].classList.toggle('hidden', true);
+  pk_order.children[2].classList.toggle('hidden', true);
   p1.children[1].classList.toggle('hidden', true);
   p1.children[2].classList.toggle('hidden', true);
   p2.children[1].classList.toggle('hidden', true);
   p2.children[2].classList.toggle('hidden', true);
 }
+trainer_display = 0;
+
+function carouselArrow(direction) {
+  alert(direction.target.id);
+}
+
+let nextarrow = document.getElementById('next');
+let prevarrow = document.getElementById('prev');
+
+nextarrow.addEventListener('click', carouselArrow);
+prevarrow.addEventListener('click', carouselArrow);
