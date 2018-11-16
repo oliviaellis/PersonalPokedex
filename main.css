@@ -1,10 +1,11 @@
 body {
   height: 100vh;
   background-color: black;
+  background-image: url("images/gym.jpg");
   font-family: Oswald, sans-serif;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .container {
@@ -110,36 +111,35 @@ span {
   background-color: #ac0000;
   top: 0;
   transition: top 0.8s ease-in-out;
-  background-color: rgb(171, 33, 199);
+  background-color: #ab21c7;
 }
 
 /* animates the gym name */
 #gym-name {
   position: relative;
-  z-index: 6
+  z-index: 6;
 }
 
 .text-focus-in {
-	-webkit-animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-focus-in 1.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  -webkit-animation: text-focus-in 1.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: text-focus-in 1.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
 @-webkit-keyframes text-focus-in {
   0% {
     -webkit-filter: blur(12px);
-            filter: blur(12px);
+    filter: blur(12px);
     opacity: 0;
   }
   100% {
     -webkit-filter: blur(0px);
-            filter: blur(0px);
+    filter: blur(0px);
     opacity: 1;
   }
 }
-
 /* adds the pulse animation to the poke-image */
 .heartbeat {
-	-webkit-animation: heartbeat 1.6s ease-in-out infinite both;
+  -webkit-animation: heartbeat 1.6s ease-in-out infinite both;
 }
 
 @-webkit-keyframes heartbeat {
@@ -149,7 +149,7 @@ span {
     -webkit-animation-timing-function: ease-out;
   }
   10% {
-    -webkit-transform: scale(0.91)
+    -webkit-transform: scale(0.91);
     -webkit-animation-timing-function: ease-in;
   }
   17% {
@@ -163,9 +163,8 @@ span {
   45% {
     -webkit-transform: scale(1);
     -webkit-animation-timing-function: ease-out;
- }
+  }
 }
-
 #bottom {
   height: 50vh;
   width: 100vw;
