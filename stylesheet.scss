@@ -10,17 +10,19 @@ $half: 50%;
 $rotate-text: rotate(270deg);
 $xl-text: 12em;
 $lg-text: 7em;
-$md-text: 5em;
+$md-text: 4em;
 $sm-text: 1.7em;
 
 body {
   height: 100vh;
   background-color: $page-bg-color;
+  background-image: url('images/gym.jpg');
   font-family: $main-font;
   // background-image: url('trainer.png');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  opacity: 0.3;
 }
 
 .container {
@@ -103,14 +105,14 @@ h4 {
       position: absolute;
       bottom: 30%;
       left: -20%;
-      font-size: 3em;
+      font-size: 2em;
     }
   }
 
 .col-md-4 {
   h2 {
     position: absolute;
-    font-size: 5em;
+    font-size: 4em;
     left: 20%;
   }
   &:hover {
