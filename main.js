@@ -32,36 +32,30 @@ function openScreen() {
   outerCircle.style.top = '-100%';
   gName.style.visibility = 'hidden';
   openButton.style.top = '-100%';
-  var h3 = document.createElement('h3');
-  var nameText = document.createTextNode(trainer.name);
-  h3.appendChild(nameText);
-  h3.classList.add('animated');
-  h3.classList.add('slideInRight');
-  h3.classList.add('delay-0.8s');
-  document.getElementById('title').appendChild(h3);
-  h3.addEventListener('click', revertColumns);
 }
 
-function getFlavorText(pokemon) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      var info = JSON.parse(xhttp.responseText);
-      var entries = info['flavor_text_entries'];
-      for (item of entries) {
-        if (item['language']['name'] === 'en') {
-          var flavorText = item['flavor_text'];
-          trainer.team[pokemon].bio = flavorText;
-      }
-      }
-    }
+class Trainer {
+  constructor(name) {
+    this.name = name;
+    this.team = {};
   }
-  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
-  xhttp.send();
 }
 
-// makes a new pokemon object
-function newPokemon(pokemon) {
+class Pokemon {
+  constructor(trainer, name, id, hp, attack, defense, types, abilities, bio) {
+    this.name = name;
+    this.id = id;
+    this.hp = hp;
+    this.attack = attack;
+    this.defense = defense;
+    this.types = types;
+    this.abilities = abilities;
+    this.bio = bio;
+    trainer.team[this.name] = this;
+    }
+}
+
+function newPokemon(pokemon, trainer) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -101,171 +95,198 @@ function newPokemon(pokemon) {
         abilities.push('<br>');
       }
 
-      new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
+      let newPokemon = new Pokemon(trainer, pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon, trainer));
     }
   }
   xhttp.open('GET', 'http://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
   xhttp.send();
 }
 
-// new trainer
-class Trainer {
-  constructor(name) {
-    this.name = name;
-    this.team = {};
-  }
-
-  all() {
-    console.log(this.team);
-  }
-
-  get(name) {
-    for (i in this.team) {
-      if (this.team[i]['name'] === name) {
-      console.log(this.team[i]);
-    }
+function getFlavorText(pokemon, trainer) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var info = JSON.parse(xhttp.responseText);
+      var entries = info['flavor_text_entries'];
+      for (item of entries) {
+        if (item['language']['name'] === 'en') {
+          var flavorText = item['flavor_text'];
+          trainer.team[pokemon].bio = flavorText;
+      }
+      }
     }
   }
+  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon + '/', true);
+  xhttp.send();
 }
 
-class Pokemon {
-  constructor(name, id, hp, attack, defense, types, abilities, bio) {
-    this.name = name;
-    this.id = id;
-    this.hp = hp;
-    this.attack = attack;
-    this.defense = defense;
-    this.types = types;
-    this.abilities = abilities;
-    this.bio = bio;
-    // trainer.team.push(this);
-    trainer.team[this.name] = this;
-    }
-}
+let olivia = new Trainer('Olivia');
+let christel = new Trainer('Christel');
+let ahmet = new Trainer('Ahmet');
+let freddy = new Trainer('Freddy');
 
-trainer = new Trainer('alivia');
-newPokemon(pokemon1);
-newPokemon(pokemon2);
-newPokemon(pokemon3);
+newPokemon('rowlet', olivia);
+newPokemon('diglett', olivia);
+newPokemon('lickitung', olivia);
+newPokemon('flareon', christel);
+newPokemon('kadabra', christel);
+newPokemon('dewgong', christel);
+newPokemon('squirtle', ahmet);
+newPokemon('charmander', ahmet);
+newPokemon('bulbasaur', ahmet);
+newPokemon('lugia', freddy);
+newPokemon('pichu', freddy);
+newPokemon('entei', freddy);
 
 // writes pokemon grid things to the page
-setTimeout(function(){
-  let counter = 0;
-  for (i in trainer.team) {
-  let grid = document.getElementById('row2');
-  let div = document.createElement('div');
-  div.classList.add('col-md-4');
-  div.classList.add('p-4');
-  div.style.transition = 'all 2s';
-  div.setAttribute('id', 'p'+ counter);
-  div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
-  div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
-  let h2 = document.createElement('h2');
-  h2.innerHTML = trainer.team[i]['name'];
-  div.appendChild(h2);
-  grid.appendChild(div);
-  counter++;
 
-  switch (trainer.team[i]['types'][0]) {
-    case 'water':
-      div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
-      div.style.color = 'white';
-      break;
-    case 'fire':
-      div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
-      break;
-    case 'psychic':
-      div.style.backgroundColor = 'rgba(221, 114, 171, 0.9)';
-      break;
-    case 'grass':
-      div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
-      break;
-    case 'flying':
-      div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
-      break;
-    case 'fighting':
-      div.style.backgroundColor = 'rgba(130, 12, 0, 0.9)';
-      div.style.color = 'white';
-      break;
-    case 'normal':
-      div.style.backgroundColor = 'rgba(140, 140, 140, 0.9)';
-      break;
-    case 'poison':
-      div.style.backgroundColor = 'rgba(100, 0, 125, 0.9)';
-      div.style.color = 'white';
-      break;
-    case 'electric':
-      div.style.backgroundColor = 'rgba(255, 207, 0, 0.9)';
-      break;
-    case 'ground':
-      div.style.backgroundColor = 'rgba(209, 168, 87, 0.9)';
-      break;
-    case 'rock':
-      div.style.backgroundColor = 'rgba(84, 62, 19, 0.9)';
-      break;
-    case 'ice':
-      div.style.backgroundColor = 'rgba(195, 219, 255, 0.9)';
-      break;
-    case 'bug':
-      div.style.backgroundColor = 'rgba(109, 166, 28, 0.9)';
-      break;
-    case 'dragon':
-      div.style.backgroundColor = 'rgba(165, 25, 172, 0.9)';
-      break;
-    case 'ghost':
-      div.style.backgroundColor = 'rgba(78, 57, 102, 0.9)';
-      div.style.color = 'white';
-      break;
-    case 'dark':
-      div.style.backgroundColor = 'rgba(31, 27, 42, 0.9)';
-      div.style.color = 'white';
-      break;
-    case 'steel':
-      div.style.backgroundColor = 'rgba(208, 255, 255, 0.9)';
-      break;
-    case 'fairy':
-      div.style.backgroundColor = 'rgba(255, 166, 193, 0.9)';
-      break;
-    default:
-      div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
-      div.style.color = 'white';
+setTimeout(function() {
+    writeToScreen(freddy, 'row2');
+}, 500);
+setTimeout(function() {
+    writeToScreen(christel, 'row4');
+}, 500);
+setTimeout(function() {
+    writeToScreen(ahmet, 'row6');
+}, 500);
+setTimeout(function() {
+    writeToScreen(olivia, 'row8');
+}, 500);
+
+let counter = 0;
+function writeToScreen(trainer, placement) {
+  var h3 = document.createElement('h3');
+  var nameText = document.createTextNode(trainer.name);
+  h3.appendChild(nameText);
+  h3.classList.add('animated');
+  h3.classList.add('slideInRight');
+  h3.classList.add('delay-0.8s');
+  h3.addEventListener('click', revertColumns);
+  if (trainer.name == 'Olivia') {
+    document.getElementById('title4').appendChild(h3);
+  } else if (trainer.name == 'Christel') {
+    document.getElementById('title2').appendChild(h3);
+  } else if (trainer.name == 'Ahmet') {
+    document.getElementById('title3').appendChild(h3);
+  } else if (trainer.name == 'Freddy') {
+    document.getElementById('title1').appendChild(h3);
   }
-  // write stats to page
-  let ul = document.createElement('ul');
-  ul.classList.add('hidden');
-  ul.classList.add('animated');
-  ul.classList.add('zoomIn');
-  ul.classList.add('delay-1s');
-  // ul.classList.add('fadeOutUp');
-  let fighter = trainer.team[i]
-  for (stat in fighter) {
-    if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
-      if (stat != ['abilities'] ) {
-        let li = document.createElement('li');
-        li.innerHTML = "<span>" + stat + "</span>" + "                                              " + fighter[stat];
-        ul.appendChild(li);
-      } else {
-        let li = document.createElement('li');
-        li.innerHTML = '<span>' + stat + '</span>';
-        ul.appendChild(li);
-        for (i in fighter[stat]) {
-        let li = document.createElement('li');
-        li.innerHTML = fighter[stat][i];
-        ul.appendChild(li);
-      }
-      }
-      }
+  for (i in trainer.team) {
+    let grid = document.getElementById(placement);
+    let div = document.createElement('div');
+    div.classList.add('col-md-4');
+    div.classList.add('p-4');
+    div.style.transition = 'all 2s';
+    div.setAttribute('id', 'p'+ counter);
+    div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+
+    div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
+    let h2 = document.createElement('h2');
+    h2.innerHTML = trainer.team[i]['name'];
+    div.appendChild(h2);
+    grid.appendChild(div);
+    counter++;
+
+    switch (trainer.team[i]['types'][0]) {
+      case 'water':
+        div.style.backgroundColor = 'rgba(45, 88, 144, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'fire':
+        div.style.backgroundColor = 'rgba(224, 108, 34, 0.9)';
+        break;
+      case 'psychic':
+        div.style.backgroundColor = 'rgba(221, 114, 171, 0.9)';
+        break;
+      case 'grass':
+        div.style.backgroundColor = 'rgba(60, 111, 62, 0.9)';
+        break;
+      case 'flying':
+        div.style.backgroundColor = 'rgba(126, 166, 232, 0.9)';
+        break;
+      case 'fighting':
+        div.style.backgroundColor = 'rgba(130, 12, 0, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'normal':
+        div.style.backgroundColor = 'rgba(140, 140, 140, 0.9)';
+        break;
+      case 'poison':
+        div.style.backgroundColor = 'rgba(100, 0, 125, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'electric':
+        div.style.backgroundColor = 'rgba(255, 207, 0, 0.9)';
+        break;
+      case 'ground':
+        div.style.backgroundColor = 'rgba(209, 168, 87, 0.9)';
+        break;
+      case 'rock':
+        div.style.backgroundColor = 'rgba(84, 62, 19, 0.9)';
+        break;
+      case 'ice':
+        div.style.backgroundColor = 'rgba(195, 219, 255, 0.9)';
+        break;
+      case 'bug':
+        div.style.backgroundColor = 'rgba(109, 166, 28, 0.9)';
+        break;
+      case 'dragon':
+        div.style.backgroundColor = 'rgba(165, 25, 172, 0.9)';
+        break;
+      case 'ghost':
+        div.style.backgroundColor = 'rgba(78, 57, 102, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'dark':
+        div.style.backgroundColor = 'rgba(31, 27, 42, 0.9)';
+        div.style.color = 'white';
+        break;
+      case 'steel':
+        div.style.backgroundColor = 'rgba(208, 255, 255, 0.9)';
+        break;
+      case 'fairy':
+        div.style.backgroundColor = 'rgba(255, 166, 193, 0.9)';
+        break;
+      default:
+        div.style.backgroundColor = 'rgba(54, 54, 54, 0.9)'
+        div.style.color = 'white';
+    }
+    // write stats to page
+    let ul = document.createElement('ul');
+    ul.classList.add('hidden');
+    ul.classList.add('animated');
+    ul.classList.add('zoomIn');
+    ul.classList.add('delay-1s');
+    // ul.classList.add('fadeOutUp');
+    let fighter = trainer.team[i]
+    for (stat in fighter) {
+      if (stat != ['name'] && stat != ['id'] && stat != ['bio']) {
+        if (stat != ['abilities'] ) {
+          let li = document.createElement('li');
+          li.innerHTML = "<span>" + stat + "</span>" + "                                              " + fighter[stat];
+          ul.appendChild(li);
+        } else {
+          let li = document.createElement('li');
+          li.innerHTML = '<span>' + stat + '</span>';
+          ul.appendChild(li);
+          for (i in fighter[stat]) {
+          let li = document.createElement('li');
+          li.innerHTML = fighter[stat][i];
+          ul.appendChild(li);
+    }
   }
-  div.appendChild(ul);
-  let p = document.createElement('p');
-  p.classList.add('hidden');
-  p.classList.add('animated');
-  p.classList.add('zoomIn');
-  p.classList.add('delay-1s');
-  p.innerHTML = fighter['bio'];
-  div.appendChild(p);
+  }
 }
-}, 200);
+div.appendChild(ul);
+let p = document.createElement('p');
+p.classList.add('hidden');
+p.classList.add('animated');
+p.classList.add('zoomIn');
+p.classList.add('delay-1s');
+p.innerHTML = fighter['bio'];
+div.appendChild(p);
+}
+}
 
 function selectPokemon(divID) {
   divID.classList.toggle('col-md-1', false);
@@ -276,6 +297,36 @@ function selectPokemon(divID) {
   let p = divID.children[2];
   ul.classList.toggle('hidden', false);
   p.classList.toggle('hidden', false);
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
   if (divID == p0) {
     p1.classList.toggle('col-md-4', false);
     p1.classList.toggle('col-md-1', true);
@@ -330,14 +381,37 @@ function selectPokemon(divID) {
   }
 }
 
-setTimeout (function() {
-  var p0 = document.getElementById('p0');
-  var p1 = document.getElementById('p1');
-  var p2 = document.getElementById('p2');
-}, 200);
-
-
 function revertColumns() {
+  switch (divID.id) {
+    case 'p0':
+    case 'p1':
+    case 'p2':
+      var p0 = document.getElementById('p0');
+      var p1 = document.getElementById('p1');
+      var p2 = document.getElementById('p2');
+      break;
+    case 'p3':
+    case 'p4':
+    case 'p5':
+      var p0 = document.getElementById('p3');
+      var p1 = document.getElementById('p4');
+      var p2 = document.getElementById('p5');
+      break;
+    case 'p6':
+    case 'p7':
+    case 'p8':
+      var p0 = document.getElementById('p6');
+      var p1 = document.getElementById('p7');
+      var p2 = document.getElementById('p8');
+      break;
+    case 'p9':
+    case 'p10':
+    case 'p11':
+      var p0 = document.getElementById('p9');
+      var p1 = document.getElementById('p10');
+      var p2 = document.getElementById('p11');
+      break;
+  }
   p0.classList.toggle('col-md-4', true);
   p0.classList.toggle('col-md-10', false);
   p0.classList.toggle('col-md-1', false);

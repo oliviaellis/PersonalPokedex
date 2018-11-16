@@ -65,12 +65,12 @@ h4 {
   }
 }
 
-#row1 {
+#row1, #row3, #row5, #row7 {
   height: 200px;
 }
 
 
-#row2 {
+#row2, #row4, #row6, #row8 {
   height: 500px;
   .col-md-10 {
     h2 {
@@ -264,4 +264,18 @@ button {
 
 #trainer-row-2 {
   height: 90px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+ top: 15%;
+ align-items: flex-start;
+}
+
+.carousel-control-prev {
+ left: -5%;
+}
+
+.carousel-control-next {
+ right: -5%;
 }
