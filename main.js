@@ -143,7 +143,6 @@ function writeToScreen(trainer, placement) {
   h3.classList.add('animated');
   h3.classList.add('slideInRight');
   h3.classList.add('delay-0.8s');
-  h3.addEventListener('click', revertColumns);
   if (trainer.name == 'Olivia') {
     document.getElementById('title4').appendChild(h3);
   } else if (trainer.name == 'Christel') {
@@ -161,6 +160,7 @@ function writeToScreen(trainer, placement) {
     div.style.transition = 'all 2s';
     div.setAttribute('id', 'p'+ counter);
     div.setAttribute('onclick', 'selectPokemon(p'+counter+')');
+    h3.setAttribute('onclick', 'revertColumns(p'+counter+')');
 
     div.style.backgroundImage = 'url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + trainer.team[i]['id'] + '.png)';
     let h2 = document.createElement('h2');
@@ -363,7 +363,15 @@ function selectPokemon(divID) {
   }
 }
 
-function revertColumns() {
+function revertColumns(divID) {
+  divID.classList.toggle('col-md-1', false);
+  divID.classList.toggle('col-md-4', true);
+  divID.classList.toggle('col-md-10', false);
+  divID.firstChild.classList.toggle('rotate', true);
+  let ul = divID.children[1];
+  let p = divID.children[2];
+  ul.classList.toggle('hidden', false);
+  p.classList.toggle('hidden', false);
   switch (divID.id) {
     case 'p0':
     case 'p1':
@@ -403,7 +411,9 @@ function revertColumns() {
   p2.classList.toggle('col-md-4', true);
   p2.classList.toggle('col-md-10', false);
   p2.classList.toggle('col-md-1', false);
-  p0.children[1].classList.toggle('hidden', true);
+  p0.firstChild.classList.toggle('rotate', false);
+  p1.firstChild.classList.toggle('rotate', false);
+  p2.firstChild.classList.toggle('rotate', false);
   p0.children[2].classList.toggle('hidden', true);
   p1.children[1].classList.toggle('hidden', true);
   p1.children[2].classList.toggle('hidden', true);
