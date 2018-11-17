@@ -1,11 +1,9 @@
 body {
   height: 100vh;
   background-color: black;
-  background-image: url("images/gym.jpg");
   font-family: Oswald, sans-serif;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .container {
@@ -298,11 +296,11 @@ button {
 }
 
 .carousel-control-prev {
-  left: -5%;
+  left: -2%;
 }
 
 .carousel-control-next {
-  right: -5%;
+  right: -2%;
 }
 
 a {

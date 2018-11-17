@@ -16,12 +16,11 @@ $sm-text: 1.7em;
 body {
   height: 100vh;
   background-color: $page-bg-color;
-  background-image: url('images/gym.jpg');
+  // background-image: url('images/gym.jpg');
   font-family: $main-font;
   // background-image: url('trainer.png');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .container {
@@ -327,11 +326,11 @@ button {
 }
 
 .carousel-control-prev {
- left: -5%;
+ left: -2%;
 }
 
 .carousel-control-next {
- right: -5%;
+ right: -2%;
 }
 
 a {
