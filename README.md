@@ -1,9 +1,5 @@
-# PersonalPokedex and Pokemon Group Gym
+# Personal Pokedex
 
-The main branch is the group gym.
+Choose a trainer icon and type in the names of your three favorite Pokemon to build your team and see their stats.
 
-The gh-pages branch is the Personal Pokedex. Choose a trainer icon, enter a trainer name, and enter the names of three Pokemon
-to see their stats, types, abilities, and photos.
-
-Built with HTML, CSS, Bootstrap, Sass, and JavaScript.
-
+This project is currently down on GitHub due to a lack of HTTPS support for the Pokemon API. Please visit my portfolio for a video of the app in action!
