@@ -108,8 +108,9 @@ function newPokemon(pokemon) {
       new Pokemon(pokeName, id, hp, attack, defense, types, abilities, getFlavorText(pokemon));
     }
   }
-  xhttp.open('GET', 'https://fizal.me/pokeapi/api/v2/name/' + pokemon + '.json', true);
+  xhttp.open('GET', 'https://pokeapi.co/api/v2/pokemon/' + pokemon + '/', true);
   xhttp.send();
+  console.log("Created pokemon")
 }
 
 // new trainer
@@ -288,8 +289,8 @@ function setUpPage() {
   }
   div.appendChild(p);
 }
-}, 750);
-  setTimeout(function() {openScreen()}, 1000);
+}, 1000);
+  setTimeout(function() {openScreen()}, 1500);
 }
 
 function selectPokemon(divID) {
