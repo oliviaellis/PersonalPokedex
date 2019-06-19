@@ -289,8 +289,8 @@ function setUpPage() {
   }
   div.appendChild(p);
 }
-}, 1000);
-  setTimeout(function() {openScreen()}, 1500);
+}, 1500);
+  setTimeout(function() {openScreen()}, 2000);
 }
 
 function selectPokemon(divID) {
