@@ -7,11 +7,6 @@ body {
   background-size: contain;
 }
 
-.container {
-  position: relative;
-  padding: 0;
-}
-
 h2, h3, h4 {
   color: whitesmoke;
 }
@@ -192,15 +187,13 @@ p {
 .modal-content {
   background-color: #333;
   color: whitesmoke;
-  margin: 5% auto;
-  padding: 20px 10px 10px 50px;
+  margin: 10% auto;
   border: 1px solid #333;
   width: 50%;
   height: 600px;
-}
-
-form {
-  margin-left: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 label {
@@ -225,10 +218,6 @@ button {
   width: 100px;
   border: none;
   border-radius: 2px;
-}
-
-#trainers {
-  padding-left: 110px;
 }
 
 #trainer-row-1 {
